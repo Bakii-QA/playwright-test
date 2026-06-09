@@ -1,4 +1,4 @@
-const {test} = require('@playwright/test');
+const {test , expect} = require('@playwright/test');
 
 test('Browser Context playwright test',async ({browser})=>
 {
@@ -13,6 +13,8 @@ test('Browser Context playwright test',async ({browser})=>
 test.only('Page playwright test',async ({page})=>
 {
    await page.goto("https://www.google.co.th/index.html")
+   console.log(await page.title());
+   await expect(page).toHaveTitle("Google")
 }
 
 );

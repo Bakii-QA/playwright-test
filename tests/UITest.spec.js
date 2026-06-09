@@ -10,7 +10,10 @@ test('Browser Context playwright test',async ({browser})=>
    await page.goto("https://www.google.co.th/index.html")
 });
 
-test.only('Page playwright test',async ({page})=>
+// รันเฉพาะ 
+//test.only('Page playwright test',async ({page})=>
+
+test('Page playwright test',async ({page})=>
 {
    await page.goto("https://www.google.co.th/index.html")
    console.log(await page.title());

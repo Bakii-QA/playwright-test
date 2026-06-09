@@ -1,4 +1,4 @@
-const {test} = require('@playwright.test');
+const {test} = require('@playwright/test');
 
 test('Browser Context playwright test',async ({browser})=>
 {

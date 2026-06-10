@@ -57,7 +57,7 @@ test.describe('Login Functionality Tests', () => {
        // ตรวจสอบข้อความเตือน (Error Message) ที่เด้งขึ้นมาบนจอ
          const errorAlert = page.locator(".alert-danger"); // คลาสกล่องสีแดงของเว็บนี้
       await expect(errorAlert).toBeVisible();
-      await expect(errorAlert).toContainText("Incorrect username/password.");
+      await expect(errorAlert).toContainText("Empty username/password.");
 });
     test("",async({page}) =>{
 

@@ -1,31 +1,54 @@
-const {test , expect , beforeEach, afterEach} = require('@playwright/test');
+const { test, expect, beforeEach, afterEach } = require('@playwright/test');
 
-test('Browser Context playwright test',async ({browser})=>
-{
-// สร้างบริบทใหม่ขึ้นมา
+test('Browser Context playwright test', async ({ browser }) => {
+   // สร้างบริบทใหม่ขึ้นมา
    const context = await browser.newContext();
-// สร้างหน้าใหม่ขึ้นมา
+   // สร้างหน้าใหม่ขึ้นมา
    const page = await context.newPage();
-// เรียกใช้หน้าใหม่
+   // เรียกใช้หน้าใหม่
    await page.goto("https://www.google.co.th/index.html")
 });
 
 // รันเฉพาะ 
 //test.only('Page playwright test',async ({page})=>
 
-test('Page playwright test',async ({page})=>
-{
-   await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
-   console.log(await page.title());
-   await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
-   await page.locator("#username").fill("rahulshettyacademy");
-   await page.locator("[type='password']").fill("Learning@830$3mK2");
-   //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
-   //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ
-   await page.locator("input[value='admin']").check();
-   await page.locator("select.form-control").selectOption("stud");
-   await page.locator("#terms").check();
-   await page.locator("#signInBtn").click();
-}
+// 1. ใช้ test.describe เพื่อรวมกลุ่มเทสที่เกี่ยวข้องกัน (เช่น เรื่อง Login)
+test.describe('Login Functionality Tests', () => {
 
-);
+   // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
+   beforeEach(async ({ page }) => {
+      await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+   });
+
+   // เคสที่ 1: Happy Path (กรอกถูกหมด)
+   test('TC-01: กรอกข้อมูลถูกต้อง -> ต้องล็อกอินสำเร็จเข้าสู่ระบบได้', async ({ page }) => {
+      //await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
+      console.log(await page.title());
+      await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
+      await page.locator("#username").fill("rahulshettyacademy");
+      await page.locator("[type='password']").fill("Learning@830$3mK2");
+      //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
+      //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ
+      await page.locator("input[value='admin']").check();
+      await page.locator("select.form-control").selectOption("stud");
+      await page.locator("#terms").check();
+      await page.locator("#signInBtn").click();
+   });
+
+   // เคสที่ 2: Negative Path (กรอกผิด)
+   test('TC-02: กรอกรหัสผ่านผิด -> ต้องล็อกอินไม่ผ่าน และมีข้อความเตือนสีแดง',async({page})=>{
+      await page.locator("#username").fill("rahulshettyacademy");
+      await page.locator("[type='password']").fill("1234");
+      await page.locator("input[value='admin']").check();
+      await page.locator("select.form-control").selectOption("stud");
+      await page.locator("#terms").check();
+      await page.locator("#signInBtn").click();
+
+      // ตรวจสอบข้อความเตือน (Error Message) ที่เด้งขึ้นมาบนจอ
+      const errorAlert = page.locator(".alert alert-danger col-md-12"); // คลาสกล่องสีแดงของเว็บนี้
+      await expect(errorAlert).toBeVisible();
+      await expect(errorAlert).toContainText("Incorrect username/password.");
+   });
+
+   
+});

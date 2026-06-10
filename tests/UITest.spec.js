@@ -15,9 +15,15 @@ test('Browser Context playwright test',async ({browser})=>
 
 test('Page playwright test',async ({page})=>
 {
-   await page.goto("https://www.google.co.th/index.html")
+   await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
    console.log(await page.title());
-   await expect(page).toHaveTitle("Google")
+   await expect(page).toHaveTitle("Google");
+   await page.locator("#username").fill("rahulshettyacademy");
+   await page.locator("[type='password']").fill("Learning@830$3mK2");
+   await page.locator("input[value='admin']").check();
+   await page.locator("input[value='student']").check();
+   await page.locator("#term']").check(true);
+   await page.locator("#signInBtn").click();
 }
 
 );

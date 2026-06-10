@@ -45,10 +45,21 @@ test.describe('Login Functionality Tests', () => {
       await page.locator("#signInBtn").click();
 
       // ตรวจสอบข้อความเตือน (Error Message) ที่เด้งขึ้นมาบนจอ
-      const errorAlert = page.locator(".alert alert-danger col-md-12"); // คลาสกล่องสีแดงของเว็บนี้
+      const errorAlert = page.locator(".alert-danger"); // คลาสกล่องสีแดงของเว็บนี้
       await expect(errorAlert).toBeVisible();
       await expect(errorAlert).toContainText("Incorrect username/password.");
    });
 
-   
+   // เคสที่ 3: ไม่กรอกอะไรเลย
+   test('TC-03: ไม่กรอกอะไรเลย -> ต้องล็อกอินไม่ผ่าน และมีข้อความเตือนสีแดง',async({page})=>{
+      // ไม่สั่ง fill() ใดๆ ทั้งสิ้น กดปุ่มเลย
+      await page.locator("#signInBtn").click();
+       // ตรวจสอบข้อความเตือน (Error Message) ที่เด้งขึ้นมาบนจอ
+         const errorAlert = page.locator(".alert-danger"); // คลาสกล่องสีแดงของเว็บนี้
+      await expect(errorAlert).toBeVisible();
+      await expect(errorAlert).toContainText("Incorrect username/password.");
+
+
+});
+
 });

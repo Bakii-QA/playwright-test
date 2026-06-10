@@ -17,7 +17,7 @@ test('Page playwright test',async ({page})=>
 {
    await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
    console.log(await page.title());
-   await expect(page).toHaveTitle("Google");
+   await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
    await page.locator("#username").fill("rahulshettyacademy");
    await page.locator("[type='password']").fill("Learning@830$3mK2");
    await page.locator("input[value='admin']").check();

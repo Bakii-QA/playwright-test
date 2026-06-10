@@ -1,4 +1,4 @@
-const {test , expect} = require('@playwright/test');
+const {test , expect , beforeEach, afterEach} = require('@playwright/test');
 
 test('Browser Context playwright test',async ({browser})=>
 {
@@ -20,9 +20,11 @@ test('Page playwright test',async ({page})=>
    await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
    await page.locator("#username").fill("rahulshettyacademy");
    await page.locator("[type='password']").fill("Learning@830$3mK2");
+   //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
+   //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ
    await page.locator("input[value='admin']").check();
    await page.locator("select.form-control").selectOption("stud");
-   await page.locator("#term").check(true);
+   await page.locator("#terms").check();
    await page.locator("#signInBtn").click();
 }
 

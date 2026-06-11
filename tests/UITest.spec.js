@@ -28,9 +28,9 @@ test.describe('Login Functionality Tests', () => {
       await page.locator("#username").fill("rahulshettyacademy");
 
       // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหม
-      const value = page.locator("#username").inputValue();
-      expect(value).toBe("rahulshettyacademy");
-      
+      const value = await page.locator("#username").inputValue();
+      await expect(value).toBe("rahulshettyacademy");
+
       await page.locator("[type='password']").fill("Learning@830$3mK2");
       //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
       //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ

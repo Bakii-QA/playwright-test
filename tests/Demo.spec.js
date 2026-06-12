@@ -1,7 +1,7 @@
-const {test, beforEach} = require('@playwright/test')
+const {test, beforeEach} = require('@playwright/test')
 
 test.describe('test function login',async()=>{
-    beforEach(async({page})=>{
+    beforeEach(async({page})=>{
             await page.goto('assadadsasd');
     });
 

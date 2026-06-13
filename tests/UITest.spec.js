@@ -45,7 +45,7 @@ test.describe('Login Functionality Tests', () => {
       await page.locator("#terms").check();
       await page.locator("#signInBtn").click();
       await expect(page).toHaveURL("https://rahulshettyacademy.com/angularpractice/shop");   
-      await page.locator(".class-body a").toContainText("iphone X");
+      await expect(page.locator(".card-body a").first()).toContainText("iphone X");
    
    
    

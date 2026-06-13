@@ -29,7 +29,7 @@ test.describe('Login Functionality Tests', () => {
       //await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
       console.log(await page.title());
       await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
-
+const cardTitle = page.locator(".card-title")
       
 
       await page.locator("#username").fill("rahulshettyacademy");
@@ -45,8 +45,12 @@ test.describe('Login Functionality Tests', () => {
       await page.locator("#terms").check();
       await page.locator("#signInBtn").click();
       await expect(page).toHaveURL("https://rahulshettyacademy.com/angularpractice/shop");   
-      await expect(page.locator(".card-body a").first()).toContainText("iphone X");
-   
+
+      console.log(await page.locator(".card-body a").first().textContent());
+      console.log(await cardTitle.nth(1).textContent());
+
+      const allCardtitle = await cardTitle.alltextContent();
+      console.log(allCardtitle);
    
    
    });

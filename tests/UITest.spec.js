@@ -15,11 +15,12 @@ test('Browser Context playwright test', async ({ browser }) => {
 // 1. ใช้ test.describe เพื่อรวมกลุ่มเทสที่เกี่ยวข้องกัน (เช่น เรื่อง Login)
 test.describe('Login Functionality Tests', () => {
 
-   const userName = page.locator("#username")
 
    // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+      const userName = page.locator("#username")
+
    });
 
    // เคสที่ 1: Happy Path (กรอกถูกหมด)

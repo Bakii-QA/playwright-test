@@ -49,7 +49,8 @@ const cardTitle = page.locator(".card-title")
       console.log(await page.locator(".card-body a").first().textContent());
       console.log(await cardTitle.nth(1).textContent());
 
-      const allCardtitle = await cardTitle.alltextContent();
+      const allCardtitle = await cardTitle.allTextContents();
+      []
       console.log(allCardtitle);
    
    

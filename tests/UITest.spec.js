@@ -20,7 +20,8 @@ test.describe('Login Functionality Tests', () => {
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const userName = page.locator("#username")
-
+      //หรือเรียกใช้เเบบประกาศตัวเเปร
+      await userName.fill("rahulshettyacademy");
    });
 
    // เคสที่ 1: Happy Path (กรอกถูกหมด)
@@ -29,11 +30,10 @@ test.describe('Login Functionality Tests', () => {
       console.log(await page.title());
       await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
 
-      //หรือเรียกใช้เเบบประกาศตัวเเปร
-      await userName.fill("rahulshettyacademy");
+      
 
       await page.locator("#username").fill("rahulshettyacademy");
-      // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหz
+      // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหม
       const value = await page.locator("#username").inputValue();
       await expect(value).toBe("rahulshettyacademy");
 

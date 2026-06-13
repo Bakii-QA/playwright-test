@@ -15,6 +15,8 @@ test('Browser Context playwright test', async ({ browser }) => {
 // 1. ใช้ test.describe เพื่อรวมกลุ่มเทสที่เกี่ยวข้องกัน (เช่น เรื่อง Login)
 test.describe('Login Functionality Tests', () => {
 
+   const userName = page.locator("#username")
+
    // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -25,9 +27,12 @@ test.describe('Login Functionality Tests', () => {
       //await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
       console.log(await page.title());
       await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
-      await page.locator("#username").fill("rahulshettyacademy");
 
-      // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหม
+      //หรือเรียกใช้เเบบประกาศตัวเเปร
+      await userName.fill("rahulshettyacademy");
+
+      await page.locator("#username").fill("rahulshettyacademy");
+      // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหz
       const value = await page.locator("#username").inputValue();
       await expect(value).toBe("rahulshettyacademy");
 
@@ -38,7 +43,12 @@ test.describe('Login Functionality Tests', () => {
       await page.locator("select.form-control").selectOption("stud");
       await page.locator("#terms").check();
       await page.locator("#signInBtn").click();
-      await expect(page).toHaveURL("https://rahulshettyacademy.com/angularpractice/shop");   });
+      await expect(page).toHaveURL("https://rahulshettyacademy.com/angularpractice/shop");   
+      await page.locator(".class-body a").toContainText("iphone X");
+   
+   
+   
+   });
 
    // เคสที่ 2: Negative Path (กรอกผิด)
    test('TC-02: กรอกรหัสผ่านผิด -> ต้องล็อกอินไม่ผ่าน และมีข้อความเตือนสีแดง',async({page})=>{

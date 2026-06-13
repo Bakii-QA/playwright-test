@@ -21,3 +21,18 @@ test.describe('test function login',async()=>{
 
 
 });
+
+
+
+/*
+if id is present
+css -> .id
+
+if class attribute is present
+css -> .class
+
+write css base on any attribute
+css -> [attribute='value']
+
+
+*/

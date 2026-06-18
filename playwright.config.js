@@ -85,6 +85,7 @@ const config =({
   //   reuseExistingServer: !process.env.CI,
   // },
   
+ // อัดทั้งหมด แต่ถ้าเคสไหนผ่านมันจะลบทิ้งอัตโนมัติ เหลือไว้เฉพาะเคสที่พัง (ค่านี้มักจะเป็นต้วเริ่มต้น)
   // use: {
   //   screenshot: 'only-on-failure',
   //   video: 'retain-on-failure',

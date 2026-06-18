@@ -84,10 +84,20 @@ const config =({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+  
+  // use: {
+  //   screenshot: 'only-on-failure',
+  //   video: 'retain-on-failure',
+  // }
+
   use: {
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
+    video: 'on', 
+    /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
+    screenshot: 'on',
   }
+
+
 
 });
 module.exports = config

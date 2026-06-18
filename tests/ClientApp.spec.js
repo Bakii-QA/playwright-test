@@ -1,4 +1,4 @@
-/*const { test, expect, beforeEach, afterEach } = require('@playwright/test');
+const { test, expect, beforeEach, afterEach } = require('@playwright/test');
 
 test('Browser Context playwright test', async ({ page }) => {
 
@@ -54,4 +54,3 @@ test('Browser Context playwright test', async ({ page }) => {
    });
 
 
-*/

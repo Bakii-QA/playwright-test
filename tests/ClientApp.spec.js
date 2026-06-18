@@ -35,7 +35,7 @@ test('Browser Context playwright test', async ({ page }) => {
    {
       await page.locator('#products .container')
       .filter({hasText: "ADIDAS ORIGINAL"})
-      .getByRole('button',{name: 'view'}).click();
+      .getByRole('button',{name: ' View'}).click();
 
       //หรือ
       // 1. หาพื้นที่กล่องสินค้าทั้งหมดมาก่อน แล้วเก็บไว้ในตัวแปร
@@ -48,7 +48,7 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการเลือก",async ({page})=> {
    await page.locator('#products .container')
-          .filter({ hasText: 'ZARA COAT 3' })
+          .filter({ hasText: /ZARA COAT 3/i })
           .getByRole('button', { name: /Add To Cart/i })
           .click();
    });

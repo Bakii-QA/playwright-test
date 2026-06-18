@@ -10,10 +10,11 @@ test('Browser Context playwright test', async ({ page }) => {
    console.log(a);
    
    await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");   
-   await page.getByPlaceholder('search').fill('iPhone 17 Pro Max');
+
+   await page.getByRole('textbox', { name: 'search' }).fill('iPhone 17 Pro Max');
 
    // ให้หลุดโฟกัสจากช่อง
-   await page.getByPlaceholder('search').blur();
+   await page.getByRole('textbox', { name: 'search' }).blur();
    // สั่งให้ไปคลิกตรงพื้นที่ว่างๆ (Body ของหน้าเว็บ) เพื่อถอนเมาส์ออกมา
    await page.locator('body').click();
 
@@ -33,7 +34,7 @@ test('Browser Context playwright test', async ({ page }) => {
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
       await page.locator('#products .container')
-      .filter({hastext: "ADIDAS ORIGINAL"})
+      .filter({hasText: "ADIDAS ORIGINAL"})
       .getByRole('button',{name: 'view'}).click();
 
       //หรือ
@@ -48,7 +49,7 @@ test('Browser Context playwright test', async ({ page }) => {
    test("เทสการเลือก",async ({page})=> {
    await page.locator('#products .container')
           .filter({ hasText: 'ZARA COAT 3' })
-          .getByRole('button', { name: 'Add To Cart' })
+          .getByRole('button', { name: /Add To Cart/i })
           .click();
    });
 

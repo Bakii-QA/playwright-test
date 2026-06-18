@@ -30,7 +30,7 @@ test('Browser Context playwright test', async ({ page }) => {
    console.log(title);
 });
 
-   test("เทสการดู View ของเเต่ละ container",({page})=>
+   test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
       await page.locator('#products .container')
       .filter({hastext: "ADIDAS ORIGINAL"})
@@ -45,7 +45,7 @@ test('Browser Context playwright test', async ({ page }) => {
    //await adidasCard.getByRole('button', { name: 'View' }).click();
    });
 
-   test("เทสการดู View ของเเต่ละ container",({page})=> {
+   test("เทสการดู View ของเเต่ละ container",async ({page})=> {
    await page.locator('#products .container')
           .filter({ hasText: 'ZARA COAT 3' })
           .getByRole('button', { name: 'Add To Cart' })

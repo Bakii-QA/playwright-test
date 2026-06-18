@@ -33,6 +33,7 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
+      await page.waitForLoadState('networkidle');
       await page.locator('#products .container').first().waitFor({ state: 'visible' });
       await page.locator('#products .container')
                .filter({ hasText: /ADIDAS ORIGINAL/i }) 
@@ -49,6 +50,8 @@ test('Browser Context playwright test', async ({ page }) => {
    });
 
    test("เทสการเลือก",async ({page})=> {
+   await page.waitForLoadState('networkidle');
+   await page.locator('#products .container').first().waitFor({ state: 'visible' });
    await page.locator('#products .container')
           .filter({ hasText: /ZARA COAT 3/i })
           .getByRole('button', { name: /Add To Cart/i })

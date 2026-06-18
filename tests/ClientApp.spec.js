@@ -33,9 +33,11 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
+      await page.locator('#products .container').first().waitFor({ state: 'visible' });
       await page.locator('#products .container')
-      .filter({hasText: "ADIDAS ORIGINAL"})
-      .getByRole('button',{name: ' View'}).click();
+               .filter({ hasText: /ADIDAS ORIGINAL/i }) 
+               .getByRole('button', { name: /view/i }) // ใช้ Regex กับปุ่มด้วย ป้องกันเรื่องช่องว่างหรือตัวเล็กใหญ่
+               .click();
 
       //หรือ
       // 1. หาพื้นที่กล่องสินค้าทั้งหมดมาก่อน แล้วเก็บไว้ในตัวแปร

@@ -30,14 +30,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report
-          
-        # สเตปนี้ต้องอยู่ล่างสุดของ Job ที่รันเทส
-      - name: Upload Playwright Report
-        uses: actions/upload-artifact@v4
-        if: always() # บังคับให้อัปโหลดแม้ว่าเทสจะพัง
-        with:
           name: playwright-report-${{ runner.os }} 
           path: playwright-report/
           retention-days: 30

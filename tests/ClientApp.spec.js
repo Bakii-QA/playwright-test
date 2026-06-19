@@ -1,18 +1,24 @@
 const { test, expect, beforeEach, afterEach } = require('@playwright/test');
 
-test('Browser Context playwright test', async ({ page }) => {
-
-   await page.goto("https://rahulshettyacademy.com/client/#/auth/login")
-   
-   const a = await page.locator("#userEmail").fill("anshika@gmail.com");
+// 🌟 ย้ายการ Login มาไว้ที่นี่: ระบบจะทำสเตปนี้ "ก่อน" เริ่มเทสทุกข้อเสมอ
+test.beforeEach(async ({ page }) => {
+   // 1. เปิดเว็บและ Login
+   await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
+   await page.locator("#userEmail").fill("anshika@gmail.com");
    await page.locator("#userPassword").fill("Iamking@000");
    await page.locator("#login").click(); 
-   console.log(a);
    
+   // 2. รอให้เข้าหน้า Dashboard สำเร็จชัวร์ๆ
    await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");   
 
-   await page.getByRole('textbox', { name: 'search' }).fill('iPhone 17 Pro Max');
+   // 3. การันตีว่ามีหน้าต่างสินค้าโผล่มาบนจอแล้วแน่ๆ (ใช้แทน networkidle ไปเลย ปลอดภัยกว่า)
+   await page.locator(".card-body b").first().waitFor({ state: 'visible' });
+});
 
+// 🧪 เทสที่ 1: ระบบจะแอบรัน beforeEach ให้ก่อน แล้วค่อยรันโค้ดด้านล่างนี้
+test('Browser Context playwright test', async ({ page }) => {
+
+   await page.getByRole('textbox', { name: 'search' }).fill('iPhone 17 Pro Max');
    // ให้หลุดโฟกัสจากช่อง
    await page.getByRole('textbox', { name: 'search' }).blur();
    // สั่งให้ไปคลิกตรงพื้นที่ว่างๆ (Body ของหน้าเว็บ) เพื่อถอนเมาส์ออกมา
@@ -33,10 +39,6 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
-      //await page.waitForLoadState('networkidle');
-      await page.locator(".card-body b").first().waitFor({ state: 'visible' });
-      await page.locator(".card-body b").allTextContents();
-      //await page.locator('#products .container').first().waitFor({ state: 'visible' });
       await page.locator('#products .container')
                .filter({ hasText: /ADIDAS ORIGINAL/i }) 
                .getByRole('button', { name: /view/i }) // ใช้ Regex กับปุ่มด้วย ป้องกันเรื่องช่องว่างหรือตัวเล็กใหญ่
@@ -52,8 +54,6 @@ test('Browser Context playwright test', async ({ page }) => {
    });
 
    test("เทสการเลือก",async ({page})=> {
-   await page.waitForLoadState('networkidle');
-   await page.locator('#products .container').first().waitFor({ state: 'visible' });
    await page.locator('#products .container')
           .filter({ hasText: /ZARA COAT 3/i })
           .getByRole('button', { name: /Add To Cart/i })

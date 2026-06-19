@@ -72,6 +72,8 @@ const cardTitle = page.locator(".card-title")
       const errorAlert = page.locator(".alert-danger"); // คลาสกล่องสีแดงของเว็บนี้
       await expect(errorAlert).toBeVisible();
       await expect(errorAlert).toContainText("Incorrect username/password.");
+      await page.locator("#signInBtn").click();
+
    });
 
    // เคสที่ 3: ไม่กรอกอะไรเลย

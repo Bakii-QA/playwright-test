@@ -62,6 +62,7 @@ const cardTitle = page.locator(".card-title")
       await page.locator("[type='password']").fill("1234");
       await page.locator("input[value='admin']").check();
       await page.locator("select.form-control").selectOption("consult");
+      await page.pause();
       await page.locator("#terms").check();
       await page.locator("#signInBtn").click();
       //หรืออีกเเบบ

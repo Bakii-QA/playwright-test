@@ -86,7 +86,7 @@ const cardTitle = page.locator(".card-title")
       await expect(errorAlert).toContainText("Empty username/password.");
 });
     test("TC-04: เลือก Radio เป็น User",async({page}) =>{
-      await page.locator("input[value='user']");
+      await page.locator("input[value='user']").check();
       const modal = page.locator('.modal-body');
       await expect(modal).toBeVisible({ timeout: 10000 });
       await expect(modal).toContainText("You will be limited to only fewer functionalities of the app. Proceed?");

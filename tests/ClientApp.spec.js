@@ -39,10 +39,11 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
-      await page.locator('#products .container')
-               .filter({ hasText: /ADIDAS ORIGINAL/i }) 
-               .getByRole('button', { name: /view/i }) // ใช้ Regex กับปุ่มด้วย ป้องกันเรื่องช่องว่างหรือตัวเล็กใหญ่
-               .click();
+      await page.locator('#products .container') // 1. ชี้ไปที่ "ตู้หนังสือใหญ่"
+          .locator('.card')                // 2. หยิบ "หนังสือทุกเล่ม" ที่อยู่ในตู้ออกมาเรียงกัน
+          .filter({ hasText: /ADIDAS ORIGINAL/i }) // 3. คัดเอาเฉพาะเล่มที่มีคำว่า ADIDAS
+          .getByRole('button', { name: /view/i })  // 4. หาปุ่ม View ของเล่มนั้น
+          .click();
 
       //หรือ
       // 1. หาพื้นที่กล่องสินค้าทั้งหมดมาก่อน แล้วเก็บไว้ในตัวแปร
@@ -55,6 +56,7 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการเลือก",async ({page})=> {
    await page.locator('#products .container')
+          .locator('.card')
           .filter({ hasText: /ZARA COAT 3/i })
           .getByRole('button', { name: /Add To Cart/i })
           .click();

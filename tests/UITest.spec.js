@@ -88,8 +88,9 @@ const cardTitle = page.locator(".card-title")
     test("TC-04: เลือก Radio เป็น User",async({page}) =>{
       await page.locator("input[value='user']");
       const modal = page.locator('.modal-body');
-      await expect(modal).toBeVisible().toContainText("You will be limited to only fewer functionalities of the app. Proceed?");
-      console.log(modal);
+      await expect(modal).toBeVisible();
+      await expect(modal).toContainText("You will be limited to only fewer functionalities of the app. Proceed?");
+      console.log("เเสดงผลลัพธ์",{modal});
 
     });
 });

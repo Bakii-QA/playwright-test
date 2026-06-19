@@ -72,6 +72,8 @@ test('Browser Context playwright test', async ({ page }) => {
          // (สมมติว่ารายการสินค้าในตะกร้าใช้คลาส .cartSection h3 คุณอาจจะต้อง inspect ดูคลาสของหน้า Cart อีกทีนะครับ)
          // แต่เราสามารถเช็กง่ายๆ ว่ามีข้อความ "ZARA COAT 3" โผล่มาบนหน้าเว็บไหม แบบนี้ครับ:
          await expect(page.locator("text=/ZARA COAT 3/i").first()).toBeVisible();
+
+         await page.locator("button[routerlink='/dashboard']").click();
       });
 
 

@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -34,6 +37,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
+        ## ขอรันบน Website
       - name: Deploy Playwright Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always() # สำคัญมาก: ให้รันสเต็ปนี้เสมอแม้ว่าเทสต์จะพัง (Fail)

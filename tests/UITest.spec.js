@@ -91,6 +91,8 @@ const cardTitle = page.locator(".card-title")
       await expect(modal).toBeVisible({ timeout: 10000 });
       await expect(modal).toContainText("You will be limited to only fewer functionalities of the app. Proceed?");
       console.log("เเสดงผลลัพธ์",{modal});
+      await page.locator("#okayBtn").click();
+      await page.locator("[type='password']").fill("1234");
 
     });
 });

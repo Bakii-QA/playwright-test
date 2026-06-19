@@ -33,8 +33,10 @@ test('Browser Context playwright test', async ({ page }) => {
 
    test("เทสการดู View ของเเต่ละ container",async ({page})=>
    {
-      await page.waitForLoadState('networkidle');
-      await page.locator('#products .container').first().waitFor({ state: 'visible' });
+      //await page.waitForLoadState('networkidle');
+      await page.locator(".card-body b").first().waitFor({ state: 'visible' });
+      await page.locator(".card-body b").allTextContents();
+      //await page.locator('#products .container').first().waitFor({ state: 'visible' });
       await page.locator('#products .container')
                .filter({ hasText: /ADIDAS ORIGINAL/i }) 
                .getByRole('button', { name: /view/i }) // ใช้ Regex กับปุ่มด้วย ป้องกันเรื่องช่องว่างหรือตัวเล็กใหญ่
@@ -57,5 +59,43 @@ test('Browser Context playwright test', async ({ page }) => {
           .getByRole('button', { name: /Add To Cart/i })
           .click();
    });
+
+
+   /*ทดสอบ loop
+   const loginData = [
+      {
+        username: 'admin',
+        password: '1234',
+        expected: 'PASS'
+      },
+      {
+        username: 'admin',
+        password: 'wrong',
+        expected: 'FAIL'
+      },
+      {
+        username: 'test',
+        password: '1234',
+        expected: 'FAIL'
+      }
+     ];
+     for (const data of loginData) {
+      test(`Login Test - ${data.username}`, async ({ page }) => {
+        await page.goto('https://example.com/login');
+        await page.locator('#username').fill(data.username);
+        await page.locator('#password').fill(data.password);
+        await page.locator('#loginBtn').click();
+        const successMessage = page.locator('.dashboard');
+        if (data.expected === 'PASS') {
+          await expect(successMessage).toBeVisible();
+        } else {
+          await expect(page.locator('.error-message')).toBeVisible();
+        }
+      });
+     }   
+   */
+
+
+
 
 

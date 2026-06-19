@@ -61,7 +61,7 @@ const cardTitle = page.locator(".card-title")
       await page.locator("#username").fill("rahulshettyacademy");
       await page.locator("[type='password']").fill("1234");
       await page.locator("input[value='admin']").check();
-      await page.locator("select.form-control").selectOption("stud");
+      await page.locator("select.form-control").selectOption("consult");
       await page.locator("#terms").check();
       await page.locator("#signInBtn").click();
       //หรืออีกเเบบ
@@ -83,6 +83,6 @@ const cardTitle = page.locator(".card-title")
       await expect(errorAlert).toContainText("Empty username/password.");
 });
     test("",async({page}) =>{
-
+     
     });
 });

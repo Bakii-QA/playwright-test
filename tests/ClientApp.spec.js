@@ -60,7 +60,19 @@ test('Browser Context playwright test', async ({ page }) => {
           .filter({ hasText: /ZARA COAT 3/i })
           .getByRole('button', { name: /Add To Cart/i })
           .click();
-   });
+          // 2. จับตัวปุ่มตะกร้าด้านบน (อ้างอิงจาก routerlink ในรูปที่คุณส่งมา)
+         const cartButtonLabel = page.locator("button[routerlink='/dashboard/cart'] label");
+
+         // 3. ตรวจสอบว่าในปุ่มตะกร้า จะต้องมีเลข "1" ปรากฏขึ้นมา
+         await expect(cartButtonLabel).toHaveText("1");
+         // 4. สั่งคลิกที่ปุ่มตะกร้าเพื่อเปลี่ยนหน้า
+         await page.locator("button[routerlink='/dashboard/cart']").click();
+
+         // 5. โหลดเข้าหน้า Cart แล้ว ให้หารายการสินค้าในตะกร้า 
+         // (สมมติว่ารายการสินค้าในตะกร้าใช้คลาส .cartSection h3 คุณอาจจะต้อง inspect ดูคลาสของหน้า Cart อีกทีนะครับ)
+         // แต่เราสามารถเช็กง่ายๆ ว่ามีข้อความ "ZARA COAT 3" โผล่มาบนหน้าเว็บไหม แบบนี้ครับ:
+         await expect(page.locator("text=/ZARA COAT 3/i").first()).toBeVisible();
+      });
 
 
    /*ทดสอบ loop

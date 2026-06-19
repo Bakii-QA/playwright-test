@@ -74,6 +74,8 @@ test('Browser Context playwright test', async ({ page }) => {
          await expect(page.locator("text=/ZARA COAT 3/i").first()).toBeVisible();
 
          await page.locator("button[routerlink='/dashboard']").click();
+         await page.locator(".card-body b").first().waitFor({ state: 'visible' });
+
       });
 
 

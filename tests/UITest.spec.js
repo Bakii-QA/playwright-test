@@ -92,6 +92,14 @@ const cardTitle = page.locator(".card-title")
       await expect(modal).toContainText("You will be limited to only fewer functionalities of the app. Proceed?");
       console.log("เเสดงผลลัพธ์",{modal});
       await page.locator("#okayBtn").click();
+      await expect(modal).not.toBeVisible();
+
+      // 2. ทำงานส่วนของ User เสร็จแล้ว... อยากเปลี่ยนกลับไป Admin
+      await page.locator("input[value='admin']").check(); 
+
+      // เช็กให้ชัวร์ว่าเปลี่ยนเป็น Admin แล้ว (หน้า Modal สำหรับ Admin อาจจะไม่เด้ง หรือเด้งข้อความอื่น)
+      await expect(page.locator("input[value='admin']")).toBeChecked();
+      await expect(page.locator("input[value='user']")).not.toBeChecked();
       await page.locator("[type='password']").fill("1234");
 
     });

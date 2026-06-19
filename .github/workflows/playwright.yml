@@ -33,3 +33,12 @@ jobs:
           name: playwright-report-${{ runner.os }} 
           path: playwright-report/
           retention-days: 30
+
+      - name: Deploy Playwright Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always() # สำคัญมาก: ให้รันสเต็ปนี้เสมอแม้ว่าเทสต์จะพัง (Fail)
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          keep_files: true # ถ้าอยากเก็บประวัติรีพอร์ตเก่าๆ ไว้
+          destination_dir: latest-report # ตั้งชื่อโฟลเดอร์บนเว็บ

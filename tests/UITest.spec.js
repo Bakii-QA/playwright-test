@@ -64,10 +64,10 @@ const cardTitle = page.locator(".card-title")
       await page.locator("select.form-control").selectOption("consult");
       await page.pause();
       await page.locator("#terms").check();
-      await page.locator("#terms").toBeChecked();
+      await expect(page.locator("#terms").toBeChecked());
       await page.locator("#terms").uncheck();
-      await page.locator("#terms").check();
       expect(await page.locator("#terms").isChecked().toBeFalsy());
+      await page.locator("#terms").check();
       await expect(page.locator("#signInBtn").click());
       //หรืออีกเเบบ
       //await page.locator("[style*'block';]").toContainText("Incorrect username/password.");

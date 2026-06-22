@@ -64,9 +64,9 @@ const cardTitle = page.locator(".card-title")
       await page.locator("select.form-control").selectOption("consult");
       await page.pause();
       await page.locator("#terms").check();
-      await expect(page.locator("#terms").toBeChecked());
+      await expect(page.locator("#terms")).toBeChecked();  //.tobe (ตรวจสอบ) วงเล็บภายใค้ locator ไม่ได้ เเต่ .is (ตรวจสอบ)จะได้
       await page.locator("#terms").uncheck();
-      expect(await page.locator("#terms").isChecked().toBeFalsy());
+      expect(await page.locator("#terms").isChecked()).toBeFalsy();
       await page.locator("#terms").check();
       await expect(page.locator("#signInBtn").click());
       //หรืออีกเเบบ

@@ -34,9 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ runner.os }} 
-          path: | 
-          test-results/
-          playwright-report/
+          path: test-results/
           retention-days: 30
 
         ## ขอรันบน Website

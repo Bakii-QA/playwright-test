@@ -123,7 +123,7 @@ const cardTitle = page.locator(".card-title")
          context.waitForEvent('page'), // new page pending
        documentLink.click(),
       ]   )// new page open
-      await page.pause(); 
+      
       const text = await newPage.locator(".red").textContent();
       console.log(text);
 

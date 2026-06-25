@@ -96,6 +96,9 @@ const config =({
     video: 'on', 
     /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
     screenshot: 'on',
+    contextOptions: {
+      recordVideo: { dir: 'test-results/' }
+    },
   }
 
 

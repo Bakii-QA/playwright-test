@@ -29,12 +29,12 @@ jobs:
       - name: Run tests
         run: npx playwright test --project=chromium
         
-      - name: Upload Playwright report
+      - name: Upload Test Results (Videos & Traces)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ runner.os }} 
-          path: playwright-report/
+          path: test-results/
           retention-days: 30
 
         ## ขอรันบน Website

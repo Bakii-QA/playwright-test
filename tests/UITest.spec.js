@@ -117,13 +117,13 @@ const cardTitle = page.locator(".card-title")
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");
       await documentLink.waitFor({ state: 'visible' });
-      
+
       const [newPage] = await Promise.all(
       [ 
          context.waitForEvent('page'), // new page pending
        documentLink.click(),
       ]   )// new page open
-
+      await page.pause(); 
       const text = await newPage.locator(".red").textContent();
       console.log(text);
 

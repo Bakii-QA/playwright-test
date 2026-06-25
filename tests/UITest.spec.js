@@ -116,7 +116,8 @@ const cardTitle = page.locator(".card-title")
 
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");
-
+      await documentLink.waitFor({ state: 'visible' });
+      
       const [newPage] = await Promise.all(
       [ 
          context.waitForEvent('page'), // new page pending

@@ -19,9 +19,10 @@ test.describe('Login Functionality Tests', () => {
    // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-      const userName = page.locator("#username")
+      const userName = page.locator("#username");
       //หรือเรียกใช้เเบบประกาศตัวเเปร
       await userName.fill("rahulshettyacademy");
+      const documentLink = page.locator("[href*='documents-request']");
    });
 
    // เคสที่ 1: Happy Path (กรอกถูกหมด)
@@ -105,6 +106,8 @@ const cardTitle = page.locator(".card-title")
       await expect(page.locator("input[value='admin']")).toBeChecked();
       await expect(page.locator("input[value='user']")).not.toBeChecked();
       await page.locator("[type='password']").fill("1234");
+
+      await expect(documentLink).toHaveAttribute("class","blinkingText");
 
     });
 });

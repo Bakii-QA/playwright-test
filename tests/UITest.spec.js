@@ -126,7 +126,6 @@ const cardTitle = page.locator(".card-title")
 
       const text = await newPage.locator(".red").textContent();
       console.log(text);
-      await page.pause();
 
       // กรณี เรียกใช้ page ต้องมีการประกาศ
       // // ต้องประกาศตัวแปรเพื่อรอรับหน้าต่างใหม่ที่กำลังจะเปิดขึ้นมา

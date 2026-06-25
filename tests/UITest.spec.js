@@ -110,8 +110,33 @@ const cardTitle = page.locator(".card-title")
 
     });
 
-    test("Child Windows",async({page}) =>{
+    test("Child Windows",async({browser}) =>{
+      const context = await browser.newContext();
+      const page = await context.newPage();
 
+      await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+      const documentLink = page.locator("[href*='documents-request']");
+
+      const [newPage] = await Promise.all(
+      [ 
+         context.waitForEvent('page'), // new page pending
+       documentLink.click(),
+      ]   )// new page open
+
+      const text = await newPage.locator(".red").textContent();
+      console.log(text);
+
+
+      // กรณี เรียกใช้ page ต้องมีการประกาศ
+      // // ต้องประกาศตัวแปรเพื่อรอรับหน้าต่างใหม่ที่กำลังจะเปิดขึ้นมา
+      // const [newPage] = await Promise.all([
+      //    page.context().waitForEvent('page'), // รอเปิดหน้าต่างใหม่
+      //    documentLink.click()                 // คลิกเพื่อให้เกิดเหตุการณ์นั้น
+      //  ]);
+ 
+      //  // ตอนนี้คุณสามารถสั่งงานในหน้าต่างใหม่ได้ผ่านตัวแปร newPage
+      //  await newPage.waitForLoadState();
+      //  console.log(await newPage.title());
 
 
     });

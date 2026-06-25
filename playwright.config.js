@@ -91,18 +91,35 @@ const config =({
   //   video: 'retain-on-failure',
   // }
 
-  use: {
-    /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
-    video: 'on', 
-    /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
-    screenshot: 'on',
-    contextOptions: {
-      recordVideo: { dir: 'test-results/' }
-    },
-  }
-
+//   use: {
+//     /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
+//     video: 'on', 
+//     /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
+//     screenshot: 'on',
+//     contextOptions: {
+//       recordVideo: { dir: 'test-results/' }
+//     },
+//   }
+// //
 
 
 });
-module.exports = config
+
+
+
+
+module.exports = {
+  use: {
+      /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
+      video: 'on', 
+      /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
+      screenshot: 'on',
+      trace: 'on',
+      contextOptions: {
+        recordVideo: { dir: 'test-results/' }
+      },
+    
+  }}
+  //
+
 

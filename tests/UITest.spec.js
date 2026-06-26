@@ -120,7 +120,7 @@ const cardTitle = page.locator(".card-title")
 
       const [newPage] = await Promise.all(
       [ 
-         context.waitForEvent('popup'), // new page pending
+         context.waitForEvent('page'), // new page pending
        documentLink.click(),
       ]   )// new page open
 

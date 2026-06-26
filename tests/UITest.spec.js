@@ -123,10 +123,15 @@ const cardTitle = page.locator(".card-title")
        documentLink.click(),
       ]   )// new page open
 
+      // 1. นำ Focus มาที่หน้าใหม่นี้ให้แน่ชัด
+      await newPage.bringToFront();
+      
       await newPage.waitForLoadState('networkidle'); //รอจนหน้าใหม่โหลดเสร็จก่อนค่อยอ่านข้อความ
+      // 3. ก่อนอ่านค่า ให้ลอง Print URL ออกมาดูว่าใช่หน้าที่เราต้องการไหม
+      console.log("Current URL: ", newPage.url());
+
       const text = await newPage.locator(".red").textContent();
       console.log(text);
-      await newPage.close();
 
       // กรณี เรียกใช้ page ต้องมีการประกาศ
       // // ต้องประกาศตัวแปรเพื่อรอรับหน้าต่างใหม่ที่กำลังจะเปิดขึ้นมา

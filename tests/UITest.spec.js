@@ -116,14 +116,14 @@ const cardTitle = page.locator(".card-title")
 
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");
-      await newPage.waitForLoadState('networkidle');
 
       const [newPage] = await Promise.all(
       [ 
-         context.waitForEvent('page'), // new page pending
+         context.waitForEvent('page'), // new page pending  เป็นการดักจับ Tab ใหม่ที่เกิดขึ้นใน Context นั้นๆ
        documentLink.click(),
       ]   )// new page open
 
+      await newPage.waitForLoadState('networkidle'); //รอจนหน้าใหม่โหลดเสร็จก่อนค่อยอ่านข้อความ
       const text = await newPage.locator(".red").textContent();
       console.log(text);
       await newPage.close();

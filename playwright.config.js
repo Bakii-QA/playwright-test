@@ -36,7 +36,7 @@ const config =({
     // baseURL: 'http://localhost:3000',
     browserName: 'Chromium',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    //trace: 'on',
     headless: false,
   },
 
@@ -96,6 +96,7 @@ const config =({
     video: 'on', 
     /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
     screenshot: 'on',
+    trace: 'on',
     contextOptions: {
       recordVideo: { dir: 'test-results/' }
     },

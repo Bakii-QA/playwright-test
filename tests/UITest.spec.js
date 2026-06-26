@@ -139,10 +139,10 @@ const cardTitle = page.locator(".card-title")
       
       console.log("ค่าที่ดึงมาได้คือ",domain);
       
-      await newPage.goto("https://rahulshettyacademy.com/loginpagePractise/");
-
       if(domain){
-         await newPage.locator("#username").fill(domain);
+         await page.locator("#username").fill(domain);
+         await page.pause();
+         console.log(await page.locator("#username").textContent)
          console.log("ดึงค่าสำเร็จ")
       } else {
          throw new Error("ดึงค่า Email มาป้อนไม่สำเร็จ!");

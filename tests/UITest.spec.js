@@ -112,6 +112,8 @@ const cardTitle = page.locator(".card-title")
     //test("Child Windows",async({browser}) =>{
 
    test("Child Windows",async({page, context}) =>{
+      // แม้ beforeEach จะเปิดหน้าเว็บไว้ให้แล้ว แต่เคสนี้คุณต้องการใช้ context/browser ใหม่
+      // คุณสามารถสั่ง page.goto ใหม่ หรือทำงานต่อได้เลย
     //  const context = await browser.newContext();
     // const page = await context.newPage();
 
@@ -132,8 +134,21 @@ const cardTitle = page.locator(".card-title")
       console.log("Current URL: ", newPage.url());
 
       const text = await newPage.locator(".red").textContent();
-      console.log(text);
+      const arrayText = text.split("@");
+      const domain = arrayText[1].split(" ")[0] // การใส่ [0] ต่อท้าย จึงเป็นการดึง สมาชิกตัวแรก ออกมา ซึ่งก็คือ "rahulshettyacademy.com" นั่นเองครับ
+      
+      console.log("ค่าที่ดึงมาได้คือ",domain);
+      
+      await newPage.goto("https://rahulshettyacademy.com/loginpagePractise/");
 
+      if(domain){
+         await newPage.locator("#username").fill(domain);
+         console.log("ดึงค่าสำเร็จ")
+      } else {
+         throw new Error("ดึงค่า Email มาป้อนไม่สำเร็จ!");
+      }
+      
+      
       // กรณี เรียกใช้ page ต้องมีการประกาศ
       // // ต้องประกาศตัวแปรเพื่อรอรับหน้าต่างใหม่ที่กำลังจะเปิดขึ้นมา
       // const [newPage] = await Promise.all([

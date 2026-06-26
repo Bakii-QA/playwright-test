@@ -116,16 +116,18 @@ const cardTitle = page.locator(".card-title")
 
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");
-      await documentLink.waitFor({ state: 'visible' });
+     // await documentLink.waitFor({ state: 'visible' });
 
       const [newPage] = await Promise.all(
       [ 
-         context.waitForEvent('page'), // new page pending
+         context.waitForEvent('popup'), // new page pending
        documentLink.click(),
       ]   )// new page open
 
+      await newPage.waitForLoadState('networkidle');
       const text = await newPage.locator(".red").textContent();
       console.log(text);
+      await newPage.close();
 
       // กรณี เรียกใช้ page ต้องมีการประกาศ
       // // ต้องประกาศตัวแปรเพื่อรอรับหน้าต่างใหม่ที่กำลังจะเปิดขึ้นมา

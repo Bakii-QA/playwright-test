@@ -141,7 +141,7 @@ const cardTitle = page.locator(".card-title")
       await newPage2.waitForLoadState('networkidle');
 
       // ตอนนี้คุณมีทั้ง newPage1 และ newPage2 ให้ใช้งานแล้วครับ
-      console.log(await newPage1.title());
+      console.log(await newPage.title());
       console.log(await newPage2.title());
 
       // 3. ก่อนอ่านค่า ให้ลอง Print URL ออกมาดูว่าใช่หน้าที่เราต้องการไหม

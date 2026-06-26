@@ -19,9 +19,9 @@ test.describe('Login Functionality Tests', () => {
    // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-      const userName = page.locator("#username");
+     // const userName = page.locator("#username");
       //หรือเรียกใช้เเบบประกาศตัวเเปร
-      await userName.fill("rahulshettyacademy");
+     // await userName.fill("rahulshettyacademy");
    });
 
    // เคสที่ 1: Happy Path (กรอกถูกหมด)
@@ -68,7 +68,7 @@ const cardTitle = page.locator(".card-title")
       await page.locator("#terms").uncheck();
       expect(await page.locator("#terms").isChecked()).toBeFalsy();
       await page.locator("#terms").check();
-      await expect(page.locator("#signInBtn").click());
+      await page.locator("#signInBtn").click();
       //หรืออีกเเบบ
       //await page.locator("[style*'block';]").toContainText("Incorrect username/password.");
 
@@ -125,7 +125,7 @@ const cardTitle = page.locator(".card-title")
 
       // 1. นำ Focus มาที่หน้าใหม่นี้ให้แน่ชัด
       await newPage.bringToFront();
-      
+
       await newPage.waitForLoadState('networkidle'); //รอจนหน้าใหม่โหลดเสร็จก่อนค่อยอ่านข้อความ
       // 3. ก่อนอ่านค่า ให้ลอง Print URL ออกมาดูว่าใช่หน้าที่เราต้องการไหม
       console.log("Current URL: ", newPage.url());

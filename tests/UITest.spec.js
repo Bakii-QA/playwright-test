@@ -139,6 +139,8 @@ const cardTitle = page.locator(".card-title")
       
       console.log("ค่าที่ดึงมาได้คือ",domain);
       
+      //อยากดู Text ให้ใช้ .textContent() 
+      //อยากเช็คว่า Text ถูกต้องไหม ให้ใช้ await expect().toContainText()
       if(domain){
          await page.locator("#username").fill(domain);
          await page.pause();

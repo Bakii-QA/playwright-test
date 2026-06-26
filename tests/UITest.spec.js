@@ -15,7 +15,6 @@ test('Browser Context playwright test', async ({ browser }) => {
 // 1. ใช้ test.describe เพื่อรวมกลุ่มเทสที่เกี่ยวข้องกัน (เช่น เรื่อง Login)
 test.describe('Login Functionality Tests', () => {
 
-
    // 2. ใช้ beforeEach เพื่อเปิดหน้าเว็บรอไว้เลย ทุกเคสจะได้ไม่ต้องเขียนบรรทัดนี้ซ้ำ
    beforeEach(async ({ page }) => {
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -110,9 +109,11 @@ const cardTitle = page.locator(".card-title")
 
     });
 
-    test("Child Windows",async({browser}) =>{
-      const context = await browser.newContext();
-      const page = await context.newPage();
+    //test("Child Windows",async({browser}) =>{
+
+   test("Child Windows",async({page, context}) =>{
+    //  const context = await browser.newContext();
+    // const page = await context.newPage();
 
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");

@@ -35,7 +35,7 @@ const cardTitle = page.locator(".card-title")
       // เช็คว่าผลลัพธ์ที่ออกเป็นตามที่พิมไหม
       const value = await page.locator("#username").inputValue();
       await expect(value).toBe("rahulshettyacademy");
-
+      console.log("ค่าในช่อง username คือ:", value);
       await page.locator("[type='password']").fill("Learning@830$3mK2");
       //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
       //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ
@@ -144,7 +144,7 @@ const cardTitle = page.locator(".card-title")
       if(domain){
          await page.locator("#username").fill(domain);
          await page.pause();
-         console.log(await page.locator("#username").textContent)
+         console.log(await page.locator("#username").textContent());
          console.log("ดึงค่าสำเร็จ")
       } else {
          throw new Error("ดึงค่า Email มาป้อนไม่สำเร็จ!");

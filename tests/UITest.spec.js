@@ -120,17 +120,30 @@ const cardTitle = page.locator(".card-title")
       await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
       const documentLink = page.locator("[href*='documents-request']");
 
-      const [newPage,newPage2] = await Promise.all(
+      const [newPage] = await Promise.all(
       [ 
          context.waitForEvent('page'), // new page pending  เป็นการดักจับ Tab ใหม่ที่เกิดขึ้นใน Context นั้นๆ
        documentLink.click(),
       ]   )// new page open
 
+      const [newPage2] = await Promise.all([
+         context.waitForEvent('page'),
+         documentLink.click(),
+      ]);
+       await newPage2.waitForLoadState('networkidle');
+       
+
       // 1. นำ Focus มาที่หน้าใหม่นี้ให้แน่ชัด
       await newPage.bringToFront();
 
+      // 2. รอหน้าโหลด
       await newPage.waitForLoadState('networkidle'); //รอจนหน้าใหม่โหลดเสร็จก่อนค่อยอ่านข้อความ
       await newPage2.waitForLoadState('networkidle');
+
+      // ตอนนี้คุณมีทั้ง newPage1 และ newPage2 ให้ใช้งานแล้วครับ
+      console.log(await newPage1.title());
+      console.log(await newPage2.title());
+
       // 3. ก่อนอ่านค่า ให้ลอง Print URL ออกมาดูว่าใช่หน้าที่เราต้องการไหม
       console.log("Current URL: ", newPage.url());
 

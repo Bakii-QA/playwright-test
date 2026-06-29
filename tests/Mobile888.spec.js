@@ -1,4 +1,4 @@
-const {test , expect} = required('@playwright/test');
+const {test , expect} = require('@playwright/test');
 
 test.describe("เทสการเปิดเบอร์ 888",async()=>{
 

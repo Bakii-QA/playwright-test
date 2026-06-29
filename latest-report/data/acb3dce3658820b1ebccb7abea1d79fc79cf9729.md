@@ -1,0 +1,119 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Mobile888.spec.js >> เทสการเปิดเบอร์ 888 >> เปิด E2E
+- Location: tests/Mobile888.spec.js:6:5
+
+# Error details
+
+```
+Test timeout of 40000ms exceeded.
+```
+
+```
+Error: locator.fill: Test timeout of 40000ms exceeded.
+Call log:
+  - waiting for locator('#mat-input-0')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e5]:
+  - generic [ref=e8]: แพ็กเกจ AIS | 3BB Fibre3
+  - generic [ref=e10]:
+    - tablist [ref=e13]:
+      - generic [ref=e14]:
+        - tab "FBB Icon แพ็กเกจ FBB Fibre" [ref=e15] [cursor=pointer]:
+          - generic [ref=e17]:
+            - img "FBB Icon" [ref=e18]
+            - generic [ref=e19]: แพ็กเกจ FBB Fibre
+        - tab "3BB Icon แพ็กเกจ 3BB Fibre" [ref=e20] [cursor=pointer]:
+          - generic [ref=e22]:
+            - img "3BB Icon" [ref=e23]
+            - generic [ref=e24]: แพ็กเกจ 3BB Fibre
+        - tab "Location Icon ตรวจสอบพื้นที่ให้บริการ" [selected] [ref=e25] [cursor=pointer]:
+          - generic [ref=e27]:
+            - img "Location Icon" [ref=e28]
+            - generic [ref=e29]: ตรวจสอบพื้นที่ให้บริการ
+    - generic:
+      - tabpanel "Location Icon ตรวจสอบพื้นที่ให้บริการ"
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e33]:
+        - button "ตำแหน่งบนแผนที่" [ref=e34]:
+          - generic [ref=e35]: ตำแหน่งบนแผนที่
+        - button "คอนโด" [active] [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: คอนโด
+        - button "บัตรประชาชนและอื่นๆ" [ref=e42]:
+          - generic [ref=e43]: บัตรประชาชนและอื่นๆ
+      - generic [ref=e48]:
+        - button "TH" [ref=e49]:
+          - generic [ref=e50]: TH
+        - button "EN" [ref=e53]:
+          - generic [ref=e54]: EN
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - heading "กรุณาเลือกวิธีการตรวจสอบ" [level=1] [ref=e62]
+        - img [ref=e64]
+        - heading "เสียบบัตร ที่เครื่องอ่าน เพื่อทำการตรวจสอบข้อมูล" [level=1] [ref=e65]:
+          - text: เสียบบัตร ที่เครื่องอ่าน
+          - text: เพื่อทำการตรวจสอบข้อมูล
+      - generic [ref=e66]:
+        - img "open-camera" [ref=e67]
+        - heading "ถ่ายรูปบัตรประชาชน" [level=3] [ref=e68]
+```
+
+# Test source
+
+```ts
+  1  | const {test , expect} = require('@playwright/test');
+  2  | 
+  3  | test.describe("เทสการเปิดเบอร์ 888",async()=>{
+  4  | 
+  5  | 
+  6  |     test("เปิด E2E",async({page})=>{
+  7  |         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/login/callback-signin");
+  8  |         await page.getByText(" ตกลง ").click();    
+  9  |         await page.locator('#mat-select-value-0').click();
+  10 | 
+  11 |         await page.locator('#mat-option-2').getByText('Temporary login').click();        
+  12 |         await page.getByRole('button', { name: 'Next' }).click();
+  13 |         await page.locator("#usernameUserInput").fill("somjateh");
+  14 |         await page.getByTestId('login-page-password-input').fill('MyChannel#May26');
+  15 |         await page.getByTestId('login-page-continue-login-button').click();
+  16 |         await page.waitForLoadState('networkidle');
+  17 |         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
+  18 |         await page.getByText(" ปิด ").click();    
+  19 |         await page.locator('.option.right-block').click();
+  20 |         await page.getByText("คอนโด").click();    
+  21 |         await page.waitForLoadState('networkidle');
+  22 |         const inputField = page.locator('#mat-input-0'); 
+  23 | 
+  24 |         // 2. ทำ Action เติมข้อความ
+> 25 |         await inputField.fill("นิช");
+     |                          ^ Error: locator.fill: Test timeout of 40000ms exceeded.
+  26 |         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
+  27 |         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
+  28 | 
+  29 | 
+  30 | 
+  31 | 
+  32 | 
+  33 | 
+  34 |     });
+  35 | 
+  36 | 
+  37 | 
+  38 | 
+  39 | 
+  40 | 
+  41 | 
+  42 | });
+```

@@ -20,7 +20,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByText("คอนโด").click();    
         await page.waitForLoadState('networkidle');
         const inputField = page.locator('#mat-input-0'); 
-
+        await inputField.waitFor({ state: 'visible', timeout: 15000 });
         // 2. ทำ Action เติมข้อความ
         await inputField.fill("นิช");
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();

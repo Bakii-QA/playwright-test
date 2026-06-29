@@ -1,6 +1,6 @@
 const {test , expect , beforeEach} = require('@playwright/test');
 
-test.describe.only('ทดสอบ Function ไหล Flow',async()=>{
+test.describe('ทดสอบ Function ไหล Flow',async()=>{
     beforeEach(async({page})=>{
         await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
         await expect(page).toHaveTitle("Let's Shop");

@@ -19,9 +19,12 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.locator('.option.right-block').click();
         await page.getByText("คอนโด").click();    
         await page.waitForLoadState('networkidle');
-        const gettxt = page.locator('.mat-input-0').fill("นิช");
-        await gettxt.getByText(" เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก  ").click();
+        const inputField = page.locator('#mat-input-0'); 
 
+        // 2. ทำ Action เติมข้อความ
+        await inputField.fill("นิช");
+        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
+        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
 
 
 

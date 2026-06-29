@@ -10,9 +10,18 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
 
         await page.locator('#mat-option-2').getByText('Temporary login').click();        
         await page.getByRole('button', { name: 'Next' }).click();
-        await page.locator("#usernameUserInput").fill("nukornsa");
-        await page.getByTestId('login-page-password-input').fill('myPassword123');
+        await page.locator("#usernameUserInput").fill("somjateh");
+        await page.getByTestId('login-page-password-input').fill('MyChannel#May26');
         await page.getByTestId('login-page-continue-login-button').click();
+        await page.waitForLoadState('networkidle');
+        await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
+        await page.getByText(" ปิด ").click();    
+        await page.locator('.option.right-block').click();
+        await page.getByText("คอนโด").click();    
+        await page.waitForLoadState('networkidle');
+        const gettxt = page.locator('.mat-input-0').fill("นิช");
+        await gettxt.getByText(" เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก  ").click();
+
 
 
 

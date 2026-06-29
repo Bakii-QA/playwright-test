@@ -12,7 +12,7 @@ test.describe('ทดสอบ Function ไหล Flow',async()=>{
     //toContainText: ตรวจสอบว่ามีข้อความนั้นอยู่บางส่วนก็ผ่าน (แนะนำให้ใช้ตัวนี้ถ้าข้อความอาจมีช่องว่างหรือจุดที่ซ่อนอยู่)
     //toBe ไม่ใช่เมธอดของ locator 
     test('TC01:กดล็อกอินหน้าจอเเบบไม่มีรหัสผ่าน',async({page})=>{
-        await page.locator(".login").click();
+        await page.locator("#login").click();
 //แบบ 1
         //await expect(page.locator(".invalid-feedback:has-text('*Email is required')")).toBeVisible();
         //await expect(page.locator(".invalid-feedback:has-text('*Password is required')")).toBeVisible();
@@ -25,9 +25,9 @@ test.describe('ทดสอบ Function ไหล Flow',async()=>{
             //]);
 
 // แบบ 3
-        await expect(page.locator("form-group").filter({ has: page.locator("#userEmail") })
+        await expect(page.locator(".form-group").filter({ has: page.locator("#userEmail") })
             .locator(".invalid-feedback")).toHaveText("*Email is required");
-        await expect(page.locator("form-group").filter({ has: page.locator("#userPassword") })
+        await expect(page.locator(".form-group").filter({ has: page.locator("#userPassword") })
              .locator(".invalid-feedback")).toHaveText("*Password is required");
 });
 

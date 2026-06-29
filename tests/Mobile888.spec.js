@@ -8,7 +8,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByText(" ตกลง ").click();    
         await page.locator('#mat-select-value-0').click();
 
-        await page.getByText(/Temporary login/i).click();        
+        await page.locator('#mat-option-2').getByText('Temporary login').click();        
         await page.getByRole('button', { name: 'Next' }).click();
         await page.locator("#usernameUserInput").fill("nukornsa");
         await page.getByTestId('login-page-password-input').fill('myPassword123');

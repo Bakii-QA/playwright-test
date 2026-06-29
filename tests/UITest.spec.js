@@ -158,7 +158,9 @@ const cardTitle = page.locator(".card-title")
       if(domain){
          await page.locator("#username").fill(domain);
          await page.pause();
-         console.log(await page.locator("#username").textContent());
+         console.log(await page.locator("#username").textContent());  // textContent จะเป็นการดึงค่าจากหน้าจอนั้นๆ
+         console.log(await page.locator("#username").inputValue());  // inputValue จะเป็นการดึงค่าจากหน้าจอสู่หน้าจอเเบบป้อนค่าเข้าไป
+
          console.log("ดึงค่าสำเร็จ")
       } else {
          throw new Error("ดึงค่า Email มาป้อนไม่สำเร็จ!");

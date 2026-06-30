@@ -26,8 +26,9 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
 
         await optionLocator.waitFor({ state: 'visible', timeout: 60000 }); // รอสูงสุด 15 วินาที
         await optionLocator.click();        
-        await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
-        await page.getByText(/คอนโด/i).click();
+        // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
+        // await page.getByText(/คอนโด/i).click();
+        await page.getByText(/คอนโด/i).click({ force: true });
         await page.waitForLoadState('networkidle');
 
 

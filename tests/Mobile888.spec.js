@@ -42,8 +42,14 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         }
         
         // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
-        await condoInput.waitFor({ state: 'attached', timeout: 70000 });
-
+        try {
+            await condoInput.waitFor({ state: 'attached', timeout: 60000 });
+        } catch (e) {
+            console.log("--- เกิด Error! พิมพ์ HTML ออกมาดู ---");
+            const html = await page.content();
+            console.log(html); // ดูใน Log ของ GitHub Actions ว่ามีคำว่า "คอนโด" หรือไม่
+            throw e; // ให้เทสต์พังเหมือนเดิมแต่เราได้เห็น Log
+        }
         // ค่อยสั่ง Fill
         await condoInput.fill('นิช');
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();

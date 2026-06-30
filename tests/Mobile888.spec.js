@@ -25,9 +25,20 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         
        // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
         //const optionLocator = page.locator('.option.right-block', { hasText: 'ตรวจสอบพื้นที่ให้บริการ' });
-        const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
+        //const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); 
+        // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
+        await page.pause(); 
+        // เพิ่มโค้ดนี้ก่อนบรรทัด 30
+        const allButtons = await page.locator('button').allTextContents();
+        console.log("ปุ่มทั้งหมดที่เจอในหน้าตอนนี้คือ:", allButtons);
 
-        await optionLocator.waitFor({ state: 'visible', timeout: 60000 }); // รอสูงสุด 15 วินาที
+        const allDivs = await page.locator('div').filter({ hasText: 'ตรวจสอบ' }).count();
+        console.log("จำนวน div ที่มีคำว่า 'ตรวจสอบ':", allDivs);
+
+        const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
+
+        // รอให้มันมองเห็น
+        await optionLocator.waitFor({ state: 'attached', timeout: 60000 });
         await optionLocator.click({ force: true });       
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();

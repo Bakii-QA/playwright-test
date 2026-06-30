@@ -20,7 +20,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByTestId('login-page-continue-login-button').click();
         await page.waitForLoadState('networkidle');
         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
-        await page.getByText(/ปิด/i).click(); 
+        // await page.getByText(/ปิด/i).click(); 
         
         
        // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });

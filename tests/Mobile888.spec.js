@@ -43,6 +43,8 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
 
         // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
         await condoInput.waitFor({ state: 'attached', timeout: 60000 });
+        await condoInput.waitForLoadState('networkidle');
+
         // ค่อยสั่ง Fill
         await condoInput.fill('นิช');
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();

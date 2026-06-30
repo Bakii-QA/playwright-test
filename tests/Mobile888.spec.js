@@ -30,10 +30,16 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.waitForLoadState('networkidle');
 
         const condoInput = page.getByLabel(/กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา/i);
-
+        
+        const count = await condoInput.count();
+        console.log(`ตอนนี้เจอช่อง Input ทั้งหมด: ${count} ช่อง`);
+        
+        if (count === 0) {
+            // ถ้าไม่เจอ อาจต้องกดอะไรบางอย่างซ้ำ หรือรอให้มากกว่านี้
+            console.log("ยังไม่เจอช่อง Input, ลองเพิ่มเวลาคอย...");
+        }
         // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
-        await condoInput.waitFor({ state: 'visible', timeout: 20000 });
-
+        await condoInput.waitFor({ state: 'attached', timeout: 20000 });
         // ค่อยสั่ง Fill
         await condoInput.fill('นิช');
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();

@@ -20,7 +20,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByTestId('login-page-continue-login-button').click();
         await page.waitForLoadState('networkidle');
         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
-        // await page.getByText(/ปิด/i).click(); 
+        await page.getByText(/ปิด/i).click(); 
         
         
        // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
@@ -28,13 +28,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         //const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); 
         // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
         await page.pause(); 
-        // เพิ่มโค้ดนี้ก่อนบรรทัด 30
-        const allButtons = await page.locator('button').allTextContents();
-        console.log("ปุ่มทั้งหมดที่เจอในหน้าตอนนี้คือ:", allButtons);
-
-        const allDivs = await page.locator('div').filter({ hasText: 'ตรวจสอบ' }).count();
-        console.log("จำนวน div ที่มีคำว่า 'ตรวจสอบ':", allDivs);
-
+        
         const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
 
         // รอให้มันมองเห็น
@@ -47,7 +41,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         const condoButton = page.getByRole('button', { name: 'คอนโด' });
 
         // 1. รอให้ปุ่มแสดงผลและกดได้จริง (กดได้จริงในที่นี้คือ enabled)
-        await condoButton.waitFor({ state: 'visible', timeout: 30000 });
+        await condoButton.waitFor({ state: 'visible', timeout: 70000 });
 
         // 2. ให้เวลาระบบประมวลผลนิดนึงก่อนคลิก (ป้องกัน Loader ที่อาจเด้งขึ้นมา)
         await page.waitForTimeout(500); 

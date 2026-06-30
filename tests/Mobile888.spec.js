@@ -20,11 +20,12 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByText(/ปิด/i).click();    
         const optionLocator = page.locator('.option.right-block');
         await optionLocator.waitFor({ state: 'visible', timeout: 15000 }); // รอสูงสุด 15 วินาที
-        await optionLocator.click();        await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
+        await optionLocator.click();        
+        await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         await page.getByText(/คอนโด/i).click();
         await page.waitForLoadState('networkidle');
-        const inputField = page.locator('#mat-input-0'); 
-        await inputField.waitFor({ state: 'visible', timeout: 15000 });
+        const inputField = page.locator('input.mat-mdc-input-element').first();
+                await inputField.waitFor({ state: 'visible', timeout: 15000 });
         // 2. ทำ Action เติมข้อความ
         await inputField.fill("นิช");
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();

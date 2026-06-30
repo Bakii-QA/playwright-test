@@ -1,3 +1,5 @@
+// git pull origin main ดึง code ล่าสุดจาก git
+
 const {test , expect} = require('@playwright/test');
 
 test.describe("เทสการเปิดเบอร์ 888",async()=>{

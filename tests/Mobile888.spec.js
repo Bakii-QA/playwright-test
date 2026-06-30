@@ -24,7 +24,14 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         await page.getByText(/คอนโด/i).click();
         await page.waitForLoadState('networkidle');
-        await page.getByLabel('กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา').fill('นิช');        // 2. ทำ Action เติมข้อความ
+
+        const condoInput = page.getByLabel(/กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา/i);
+
+        // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
+        await condoInput.waitFor({ state: 'visible', timeout: 20000 });
+
+        // ค่อยสั่ง Fill
+        await condoInput.fill('นิช');
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
     });

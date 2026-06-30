@@ -22,12 +22,11 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
         await page.getByText(/ปิด/i).click(); 
         
-        
        // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
         //const optionLocator = page.locator('.option.right-block', { hasText: 'ตรวจสอบพื้นที่ให้บริการ' });
         //const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); 
         // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
-        await page.pause(); 
+        //await page.pause(); 
         
         const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
 

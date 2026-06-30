@@ -34,7 +34,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         // await condoInput.waitFor({ state: 'visible', timeout: 70000 });
 
         // ค่อยสั่ง Fill
-        await condoInput.fill('นิช');
+        await condoInput.fill('นิช', { delay: 100 });        
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
         await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
     });

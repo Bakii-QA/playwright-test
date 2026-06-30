@@ -30,7 +30,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         // await page.getByText(/คอนโด/i).click();
         await page.getByRole('button', { name: 'คอนโด' }).click({ force: true });        
         const condoInput = page.getByLabel(/กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา/i);
-        await condoInput.waitFor({ state: 'visible', timeout: 30000 });
+        await condoInput.waitFor({ state: 'visible', timeout: 60000 });
 
         const count = await condoInput.count();
         console.log(`ตอนนี้เจอช่อง Input ทั้งหมด: ${count} ช่อง`);

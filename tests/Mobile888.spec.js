@@ -40,10 +40,9 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
             // ถ้าไม่เจอ อาจต้องกดอะไรบางอย่างซ้ำ หรือรอให้มากกว่านี้
             console.log("ยังไม่เจอช่อง Input, ลองเพิ่มเวลาคอย...");
         }
-
+        
         // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
-        await condoInput.waitFor({ state: 'attached', timeout: 60000 });
-        await condoInput.waitForLoadState('networkidle');
+        await condoInput.waitFor({ state: 'attached', timeout: 70000 });
 
         // ค่อยสั่ง Fill
         await condoInput.fill('นิช');

@@ -30,16 +30,15 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
 
         
         const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
-        console.log("URL ปัจจุบันคือ:", page.url());
-        // ถ่ายรูปหน้าจอตรงนี้เลย เพื่อดูว่าปุ่มมันมีอยู่จริงไหมในขณะที่สคริปต์หาไม่เจอ
-        await page.screenshot({ path: 'debug-page-state.png' });
-        // แทนที่จะรอ URL เราก็รอให้ปุ่ม "ตรวจสอบพื้นที่ให้บริการ" ปรากฏขึ้นมาแทน
+        
         await optionLocator.waitFor({ state: 'visible', timeout: 30000 });
         await optionLocator.click({ force: true });
 
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();
-        
+
+        await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/cc/search/other");
+
         // เปลี่ยนจากการ click({ force: true }) ทันที เป็นรอให้ปุ่ม "พร้อม" ก่อน
         const condoButton = page.getByRole('button', { name: 'คอนโด' });
 

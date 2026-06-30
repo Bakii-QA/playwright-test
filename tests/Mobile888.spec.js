@@ -35,25 +35,10 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
 
 
 
-        // 1. ตรวจสอบให้มั่นใจว่าเห็นแล้วและคลิกให้ Focus ก่อน
-        await condoInput.scrollIntoViewIfNeeded();
-        await condoInput.click({ force: true }); // บังคับคลิกเพื่อให้มัน Focus
-
-        // 2. ใช้การส่งค่าแบบคีย์บอร์ด (ไม่ใช่ fill) ในกรณีที่เป็นระบบ Auto-complete
-        // บางครั้ง .fill() มันวางข้อมูลทีเดียว แต่ .pressSequentially() จะค่อยๆ พิมพ์
-        await condoInput.pressSequentially('นิช', { delay: 200 });
-
-        // 3. หลังจากพิมพ์แล้ว ต้องให้เวลาหน้าเว็บโหลด "Dropdown" รายชื่อคอนโดขึ้นมา
-        // ถ้า .waitFor() ตรงๆ แล้วพัง ให้ลองใช้ waitForTimeout ดูว่ามันขึ้นไหม
-        await page.waitForTimeout(3000);
-
-
-
-        
         // ค่อยสั่ง Fill
-        // await condoInput.fill('นิช', { delay: 100 });        
-        // await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
-        // await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
+        await condoInput.fill('นิช', { delay: 200 });        
+        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
+        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
     });
 
 

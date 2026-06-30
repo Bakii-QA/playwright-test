@@ -1,4 +1,7 @@
-// git pull origin main ดึง code ล่าสุดจาก git
+// // git pull origin main ดึง code ล่าสุดจาก git
+// ถ้า Error เกี่ยวกับ Timeout: แสดงว่าเรา "รีบไป" หรือ "หาเป้าหมายไม่เจอ" (ให้เช็ค: เงื่อนไขการรอ, ลำดับของหน้าเว็บ)
+// ถ้า Error เกี่ยวกับ Element intercepted: แสดงว่ามี "อะไรมาบัง" (ให้เช็ค: Loader, Modal, หรือ Z-index)
+// ถ้า Error เกี่ยวกับ Context closed: แสดงว่าหน้าเว็บ "หนีไปแล้ว" (ให้เช็ค: การเปลี่ยน URL, การเปิด Tab ใหม่)
 
 const {test , expect} = require('@playwright/test');
 
@@ -29,16 +32,22 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();
         await page.getByRole('button', { name: 'คอนโด' }).click({ force: true });        
-        const condoInput = page.getByLabel(/กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา/i);
-        // // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
-        // await condoInput.waitFor({ state: 'visible', timeout: 70000 });
+        
+        const condoInput = page.locator('#mat-input-2');
+        // 2. รอให้มันพร้อมและพิมพ์
+        await condoInput.waitFor({ state: 'visible', timeout: 30000 });
+        await condoInput.click();
+        await condoInput.pressSequentially('นิช', { delay: 150 });
+
+        // 3. รอให้รายการคอนโดที่ต้องการแสดงขึ้นมา (ใช้ Locator ที่เจาะจงที่ span class="building-name")
+        // เราใช้ .locator('text=...') เพื่อหาชื่อโครงการให้เจอแม้จะมีช่องว่างแฝง
+        const targetCondo = page.locator('span.building-name').filter({ hasText: 'เดอะ นิช โมโน รัชวิภา อาคาร บี' });
+
+        // 4. รอให้รายการเด้งขึ้นมา แล้วค่อยคลิก
+        await targetCondo.waitFor({ state: 'visible', timeout: 30000 });
+        await targetCondo.click();
 
 
-
-        // ค่อยสั่ง Fill
-        await condoInput.fill('นิช', { delay: 200 });        
-        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").waitFor();
-        await page.getByText("เดอะ นิช โมโน รัชวิภา อาคาร บี (ไฟเบอร์) ตึก").click();
     });
 
 

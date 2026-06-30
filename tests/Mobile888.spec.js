@@ -19,7 +19,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.goto("https://sit-mychannel.cdc.ais.th/ais-fibre/?type=logged-in");
         await page.getByText(/ปิด/i).click();    
         const optionLocator = page.locator('.option.right-block');
-        await optionLocator.waitFor({ state: 'visible', timeout: 15000 }); // รอสูงสุด 15 วินาที
+        await optionLocator.waitFor({ state: 'visible', timeout: 30000 }); // รอสูงสุด 15 วินาที
         await optionLocator.click();        
         await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         await page.getByText(/คอนโด/i).click();

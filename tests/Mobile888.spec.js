@@ -28,7 +28,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
 
         await optionLocator.waitFor({ state: 'visible', timeout: 60000 }); // รอสูงสุด 15 วินาที
-        await optionLocator.click();        
+        await optionLocator.click({ force: true });       
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();
         await page.getByRole('button', { name: 'คอนโด' }).click({ force: true });        

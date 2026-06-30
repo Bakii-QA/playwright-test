@@ -21,14 +21,14 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         
         
        // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
-        const optionLocator = page.locator('.option.right-block', { hasText: 'ตรวจสอบพื้นที่ให้บริการ' });
+        //const optionLocator = page.locator('.option.right-block', { hasText: 'ตรวจสอบพื้นที่ให้บริการ' });
+        const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i, { exact: true });
 
         await optionLocator.waitFor({ state: 'visible', timeout: 60000 }); // รอสูงสุด 15 วินาที
         await optionLocator.click();        
         await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         await page.getByText(/คอนโด/i).click();
         await page.waitForLoadState('networkidle');
-
 
 
         const condoInput = page.getByLabel(/กรุณาระบุชื่อคอนโดเพื่อทำการค้นหา/i);
@@ -40,7 +40,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
             // ถ้าไม่เจอ อาจต้องกดอะไรบางอย่างซ้ำ หรือรอให้มากกว่านี้
             console.log("ยังไม่เจอช่อง Input, ลองเพิ่มเวลาคอย...");
         }
-        
+
         // รอให้มันมองเห็น (ถ้ามันซ่อนอยู่ มันจะรอจนกว่าจะแสดงผล)
         await condoInput.waitFor({ state: 'attached', timeout: 60000 });
         // ค่อยสั่ง Fill

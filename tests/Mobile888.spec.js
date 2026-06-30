@@ -27,11 +27,11 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         //const optionLocator = page.getByText(/ตรวจสอบพื้นที่ให้บริการ/i); 
         // exact: true  ตั้งค่าให้การค้นหา Element "ต้องตรงกับข้อความที่ระบุแบบ 100% (เป๊ะๆ)"
         //await page.pause(); 
-        await page.waitForURL('https://sit-mychannel.cdc.ais.th/ais-fibre/cc/search/other');
         const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
+        // แทนที่จะรอ URL เราก็รอให้ปุ่ม "ตรวจสอบพื้นที่ให้บริการ" ปรากฏขึ้นมาแทน
+        await optionLocator.waitFor({ state: 'visible', timeout: 30000 });
+        await optionLocator.click({ force: true });
 
-        // รอให้มันมองเห็น
-        await optionLocator.click({ force: true });       
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();
         

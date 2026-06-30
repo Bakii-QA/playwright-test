@@ -20,7 +20,8 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await page.getByText(/ปิด/i).click(); 
         
         
-        const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
+       // const optionLocator = page.getByRole('button', { name: /ตรวจสอบพื้นที่ให้บริการ/i });
+        const optionLocator = page.locator('.option.right-block', { hasText: 'ตรวจสอบพื้นที่ให้บริการ' });
 
         await optionLocator.waitFor({ state: 'visible', timeout: 60000 }); // รอสูงสุด 15 วินาที
         await optionLocator.click();        

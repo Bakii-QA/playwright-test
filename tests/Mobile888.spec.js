@@ -31,8 +31,23 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await optionLocator.click({ force: true });       
         // await page.getByText(/คอนโด/i).waitFor({ state: 'visible' });
         // await page.getByText(/คอนโด/i).click();
-        await page.getByRole('button', { name: 'คอนโด' }).click({ force: true });        
         
+        // เปลี่ยนจากการ click({ force: true }) ทันที เป็นรอให้ปุ่ม "พร้อม" ก่อน
+        const condoButton = page.getByRole('button', { name: 'คอนโด' });
+
+        // 1. รอให้ปุ่มแสดงผลและกดได้จริง (กดได้จริงในที่นี้คือ enabled)
+        await condoButton.waitFor({ state: 'visible', timeout: 30000 });
+
+        // 2. ให้เวลาระบบประมวลผลนิดนึงก่อนคลิก (ป้องกัน Loader ที่อาจเด้งขึ้นมา)
+        await page.waitForTimeout(500); 
+
+        // 3. ถ้ายังไม่ได้ ให้ลอง force: true อีกครั้ง แต่ครั้งนี้เรามั่นใจว่าปุ่มมาแล้ว
+        await condoButton.click({ force: true });
+
+
+
+
+
         const condoInput = page.locator('#mat-input-2');
         // 2. รอให้มันพร้อมและพิมพ์
         await condoInput.waitFor({ state: 'visible', timeout: 30000 });

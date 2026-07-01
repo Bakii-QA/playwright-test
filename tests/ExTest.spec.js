@@ -30,8 +30,11 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const passwordField = page.locator('input[type="password"]')
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
+        
         const currentValue = await passwordField.inputValue();
         await page.locator('input[type="password"]').fill(currentValue+'456');
+
+
         const finalValue = await page.locator('input[type="password"]').inputValue();
         // 3. แสดงผลค่าที่ได้
         console.log("ค่าของ Password คือ", finalValue);

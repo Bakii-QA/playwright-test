@@ -1,4 +1,4 @@
-const {expect , test} = require('@playwright/test')
+const {expect , test ,beforeEach} = require('@playwright/test')
 
 test.describe('ทดสอบการไหล Flow',()=>{
     beforeEach('Start',async ({page})=> {
@@ -11,7 +11,9 @@ test.describe('ทดสอบการไหล Flow',()=>{
     })
 
 
-    
+
+
+
 
 
 

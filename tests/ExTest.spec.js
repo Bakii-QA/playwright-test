@@ -6,10 +6,11 @@ test.describe('ทดสอบการไหล Flow',()=>{
     })
 
     test('TC01-open Testing Guide For Test',async({page})=>{
-        const a = await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
-        console.log("ตรวจสอบชื่อคือ",a);
+        await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
+        const currentTitle = await page.title();
+        console.log("ตรวจสอบชื่อคือ:", currentTitle);
         await page.getByRole('button',{name: 'Testing Guide' }).click();
-        await page.waitForTimeout('2000');
+        await page.waitForTimeout(2000);
     })
 
 

@@ -41,9 +41,13 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('[type="submit"]').click();
         const a = page.locator(".help-block");
         await expect(a).toBeVisible();
-        await expect(a).toContext("Invalid email or password");
+        await expect(a).toContaintext("Invalid email or password");
 
-
+        // ใช้ toHaveText ถ้าต้องการเช็คว่าข้อความตรงกันแบบเป๊ะๆ
+       // await expect(a).toHaveText("Invalid email or password");
+        
+        // หรือใช้ toContainText ถ้าต้องการเช็คแค่ว่ามีข้อความนี้ปรากฏอยู่ (แนะนำตัวนี้มากกว่า เพราะยืดหยุ่นกว่า)
+       // await expect(a).toContainText("Invalid email or password");
 
     })
 

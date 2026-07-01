@@ -27,16 +27,16 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
-        const passwordField = page.locator('input[type="password"]');
+        const passwordField = page.locator('input[name="password"]');
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
 
 
         const currentValue = await passwordField.inputValue();
-        await page.locator('input[type="text"]').fill(currentValue+'456');
+        await passwordField.fill(currentValue+'456');
 
 
-        const finalValue = await page.locator('input[type="text"]').inputValue();
+        const finalValue = await passwordField.inputValue();
         // 3. แสดงผลค่าที่ได้
         console.log("ค่าของ Password คือ", finalValue);
 

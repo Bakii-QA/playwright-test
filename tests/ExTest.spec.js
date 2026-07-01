@@ -7,7 +7,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
     test('TC01-open Testing Guide For Test',async({page})=>{
         await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
-        await page.getBัRole('button',{name: 'Testing Guide' }).click()  ;
+        await page.getByRole('button',{name: 'Testing Guide' }).click()  ;
     } )
 
     

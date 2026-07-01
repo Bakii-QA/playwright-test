@@ -5,6 +5,10 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.goto("https://practicesoftwaretesting.com/");
     })
 
+    test('TC01-open Testing Guide For Test',async({page})=>{
+        await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
+        await page.getBัRole('button',{name: 'Testing Guide' }).click()  ;
+    } )
 
     
 

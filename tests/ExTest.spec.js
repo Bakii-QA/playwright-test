@@ -27,13 +27,14 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
+
         const passwordField = page.locator('input[data-test="password"]');
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
 
 
         const currentValue = await passwordField.inputValue();
-        await passwordField.fill(currentValue+'456');
+        await passwordField.fill(currentValue+'45678910');
 
 
         const finalValue = await passwordField.inputValue();
@@ -46,7 +47,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // await page.keyboard.type('456'); // พิมพ์ 456 ต่อเข้าไป (ผลลัพธ์จะเป็น 123456)
 
         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') }).click();
-        await page.locator('[type="submit"]').click();
+        await page.locator('input[data-test="login-submit"]').click();
         const a = page.locator(".help-block");
         await expect(a).toBeVisible();
         await expect(a).toContainText("Invalid email or password");

@@ -14,8 +14,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.getByRole('button',{name: '✕ Close Split Screen' }).click();
     })
     test('TC02-Change Language',async ({page})=>{
-        await page.locator('#language').click()
-        await page.locator('[role="menu"]',{hasText:'DE'}),click();
+        await page.locator('#language').click();
+        await page.locator('[role="menu"]',{hasText:'DE'}).click();
         
 
 

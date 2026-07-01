@@ -17,7 +17,9 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('#language').click();
         await page.locator('[role="menuitem"]',{hasText:'DE'}).click();
         await page.locator('#language').click();
-        await page.locator('.dropdown-item [role="menuitem"]',{hasText:'EN'}).click();
+        //await page.locator('.dropdown-item [role="menuitem"]',{hasText:'EN'}).click();
+        await page.getByRole('menuitem',{name: 'EN' }).click();
+
     })
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();

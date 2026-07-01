@@ -38,7 +38,7 @@ const cardTitle = page.locator(".card-title")
       console.log("ค่าในช่อง username คือ:", value);
       await page.locator("[type='password']").fill("Learning@830$3mK2");
       //Radio Button / Checkbox: (ปุ่มกลม/ปุ่มเหลี่ยมที่มีให้ติ๊ก) ➡️ ใช้คำสั่ง .check() หรือ .uncheck()
-      //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับ
+      //Dropdown List: (กล่องที่ต้องกดแล้วมีรายการยืดลงมา) ➡️ ต้องใช้คำสั่ง .selectOption("ค่า value") เท่านั้นครับ สั่ง .check() จะเออร์เรอร์ทันทีแบบที่เจอในรอบแรกครับเเต่ไม่เสมอไปบางตัวเป็น selct ปลอมต้องคิลกก่อนเลยจะใช้ไม่ได้
       await page.locator("input[value='admin']").check();
       await page.locator("select.form-control").selectOption("stud");
       await page.locator("#terms").check();

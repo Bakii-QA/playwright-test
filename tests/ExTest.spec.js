@@ -1,5 +1,5 @@
 const {expect , test ,beforeEach} = require('@playwright/test')
-
+//(Flaky Test คือเทสต์ที่ เดี๋ยวผ่าน เดี๋ยวพัง โดยที่ไม่ได้แก้โค้ดเลย)
 test.describe('ทดสอบการไหล Flow',()=>{
     beforeEach('Start',async ({page})=> {
         await page.goto("https://practicesoftwaretesting.com/");
@@ -27,15 +27,16 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
-        const passwordField = page.locator('input[type="password"]')
+        const passwordField = page.locator('input[type="password"]');
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
-        
+
+
         const currentValue = await passwordField.inputValue();
-        await page.locator('input[type="password"]').fill(currentValue+'456');
+        await page.locator('input[type="text"]').fill(currentValue+'456');
 
 
-        const finalValue = await page.locator('input[type="password"]').inputValue();
+        const finalValue = await page.locator('input[type="text"]').inputValue();
         // 3. แสดงผลค่าที่ได้
         console.log("ค่าของ Password คือ", finalValue);
 

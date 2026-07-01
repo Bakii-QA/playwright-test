@@ -16,6 +16,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC02-Change Language',async ({page})=>{
         await page.locator('#language').click();
         await page.locator('[role="menuitem"]',{hasText:'DE'}).click();
+        await page.locator('#language').click();
         await page.locator('.dropdown-item [role="menuitem"]',{hasText:'EN'}).click();
     })
     test('TC03-SignIn Account',async({page})=>{

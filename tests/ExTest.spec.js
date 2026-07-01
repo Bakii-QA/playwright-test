@@ -33,10 +33,16 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const currentValue = await passwordField.inputValue();
         await page.locator('input[type="password"]').fill(currentValue+'456');
         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') })
+        console.log("ค่าของ Password คือ",currentValue);
         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
         // await page.keyboard.type('123'); // พิมพ์ 123
         // await page.locator('input[type="button"]').click(); // กดปุ่ม
         // await page.keyboard.type('456'); // พิมพ์ 456 ต่อเข้าไป (ผลลัพธ์จะเป็น 123456)
+        await page.locator('[type="submit"]').click();
+        const a = page.locator(".help-block");
+        await expect(a).toBeVisible();
+        await expect(a).toContext("Invalid email or password");
+
 
 
     })

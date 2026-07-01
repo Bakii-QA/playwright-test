@@ -69,7 +69,7 @@ test.describe("เทสการเปิดเบอร์ 888",async()=>{
         await targetCondo.waitFor({ state: 'visible', timeout: 30000 });
         await targetCondo.click();
 
-
+        
     });
 
 

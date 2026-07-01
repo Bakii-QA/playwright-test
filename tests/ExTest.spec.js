@@ -29,18 +29,19 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
         const passwordField = page.locator('input[type="password"]')
         await passwordField.fill('123');
-        await page.locator('button', { has: page.locator('[data-icon="eye"]') })
+        await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
         const currentValue = await passwordField.inputValue();
-        page.locator('input[type="password"]').fill(currentValue+'456');
+        await page.locator('input[type="password"]').fill(currentValue+'456');
         const finalValue = await page.locator('input[type="password"]').inputValue();
         // 3. แสดงผลค่าที่ได้
         console.log("ค่าของ Password คือ", finalValue);
-        await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') })
-        console.log("ค่าของ Password คือ",currentValue);
+
         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
         // await page.keyboard.type('123'); // พิมพ์ 123
         // await page.locator('input[type="button"]').click(); // กดปุ่ม
         // await page.keyboard.type('456'); // พิมพ์ 456 ต่อเข้าไป (ผลลัพธ์จะเป็น 123456)
+
+        await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') }).click();
         await page.locator('[type="submit"]').click();
         const a = page.locator(".help-block");
         await expect(a).toBeVisible();

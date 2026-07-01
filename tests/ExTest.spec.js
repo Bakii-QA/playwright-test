@@ -31,7 +31,10 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') })
         const currentValue = await passwordField.inputValue();
-        await page.locator('input[type="password"]').fill(currentValue+'456');
+        page.locator('input[type="password"]').fill(currentValue+'456');
+        const finalValue = await page.locator('input[type="password"]').inputValue();
+        // 3. แสดงผลค่าที่ได้
+        console.log("ค่าของ Password คือ", finalValue);
         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') })
         console.log("ค่าของ Password คือ",currentValue);
         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
@@ -41,7 +44,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('[type="submit"]').click();
         const a = page.locator(".help-block");
         await expect(a).toBeVisible();
-        await expect(a).toContaintext("Invalid email or password");
+        await expect(a).toContainText("Invalid email or password");
 
         // ใช้ toHaveText ถ้าต้องการเช็คว่าข้อความตรงกันแบบเป๊ะๆ
        // await expect(a).toHaveText("Invalid email or password");

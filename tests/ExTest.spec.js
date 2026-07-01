@@ -29,10 +29,10 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
         const passwordField = page.locator('input[type="password"]')
         await passwordField.fill('123');
-        await page.locator('button', { has: page.locator('[role="img"]') }).click();
+        await page.locator('button', { has: page.locator('[data-icon="eye"]') })
         const currentValue = await passwordField.inputValue();
         await page.locator('input[type="password"]').fill(currentValue+'456');
-        await page.locator('button', { has: page.locator('[role="img"]') }).click();
+        await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') })
         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
         // await page.keyboard.type('123'); // พิมพ์ 123
         // await page.locator('input[type="button"]').click(); // กดปุ่ม

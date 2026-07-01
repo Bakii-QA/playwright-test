@@ -27,7 +27,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
         await page.locator('input[type="email"]').fill('banktest@gmail.com');
-        const passwordField = page.locator('input[name="password"]');
+        const passwordField = page.locator('input[data-test="password"]');
         await passwordField.fill('123');
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
 

@@ -11,8 +11,18 @@ test.describe('ทดสอบการไหล Flow',()=>{
         console.log("ตรวจสอบชื่อคือ:", currentTitle);
         await page.getByRole('button',{name: 'Testing Guide' }).click();
         await page.waitForTimeout(2000);
+        await page.getByRole('button',{name: '✕ Close Split Screen' }).click();
     })
+    test('TC02-Change Language',async ({page})=>{
+        await page.locator('#id').selectOption("DE");
+        await page.waitForTimeout(1000);
+        await page.locator('#id').selectOption("EN");
 
+
+
+
+
+    })
 
 
 

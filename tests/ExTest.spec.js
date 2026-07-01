@@ -47,7 +47,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // await page.keyboard.type('456'); // พิมพ์ 456 ต่อเข้าไป (ผลลัพธ์จะเป็น 123456)
 
         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') }).click();
-        await page.locator('input[data-test="login-submit"]').click({force : true});
+        await page.mouse.wheel(0, 500);
+        await page.locator('input[data-test="login-submit"]').click();
 
         const count = await page.locator('input[data-test="login-submit"]').count();
         console.log("จำนวนปุ่มที่เจอคือ:", count);

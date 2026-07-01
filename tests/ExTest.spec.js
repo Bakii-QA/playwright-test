@@ -9,7 +9,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const a = await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
         console.log("ตรวจสอบชื่อคือ",a);
         await page.getByRole('button',{name: 'Testing Guide' }).click();
-        await page.pause();
+        await page.waitForTimeout('2000');
     })
 
 

@@ -48,7 +48,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') }).click();
         await page.locator('input[data-test="login-submit"]').click();
-        const a = page.locator(".help-block");
+        const a = await page.locator(".help-block");
         await expect(a).toBeVisible();
         await expect(a).toContainText("Invalid email or password");
 

@@ -12,7 +12,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.getByRole('button',{name: 'Testing Guide' }).click();
         await page.waitForTimeout(2000);
         await page.getByRole('button',{name: '✕ Close Split Screen' }).click();
-        await page.waitForLoadState('networkidle');
+        await page.waitForLoadState('DOMContentLoaded');
 })
     test('TC02-Change Language',async ({page})=>{
         await page.locator('#language').click();

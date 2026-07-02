@@ -105,9 +105,13 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="postal_code"]').fill("10270");
         await page.locator('input[data-test="house_number"]').fill("639");
         await page.locator('input[data-test="street"]').fill("Raikao");
-        await page.locator('input[data-test="postal_code"]').fill("10270")
-
-
+        await page.locator('input[data-test="city"]').fill("Prachuap");
+        await page.locator('input[data-test="state"]').fill("Samroiyod");
+        await page.locator('input[data-test="phone"]').fill("0893443321");
+        await page.locator('input[data-test="email"]').fill("bakii@gmail.com");
+        await page.locator('input[data-test="password"]').fill("12345");
+        await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
+        await page.getByRole('button',{hasText:'Register '}).click();
 
 
         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก

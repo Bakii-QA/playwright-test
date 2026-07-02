@@ -26,7 +26,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
     })
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
-        await page.locator('input[type="email"]').fill('banktest@gmail.com');
+        const usernameValue = page.locator('input[type="email"]');
+        usernameValue.fill('banktest@gmail.com');
 
         const passwordField = page.locator('input[data-test="password"]');
         await passwordField.fill('123');
@@ -41,6 +42,12 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // 3. แสดงผลค่าที่ได้
         console.log("ค่าของ Password คือ", finalValue);
 
+        if (!usernameValue || !finalValue) {
+            console.log("Username หรือ Password ว่างอยู่");
+        } else {
+            console.log("Username และ Password มีค่าครบถ้วน");
+        }
+        
         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
         // await page.keyboard.type('123'); // พิมพ์ 123
         // await page.locator('input[type="button"]').click(); // กดปุ่ม
@@ -78,6 +85,25 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const register = await page.locator('a[data-test="register-link"]');
         await register.scrollIntoViewIfNeeded(); 
         await register.click();
+        await page.locator('input[data-test="first-name"]').fill("Baaki-QA");
+        await page.locator('input[data-test="last-name"]').fill("Engineer");
+
+        const dobField = page.locator('[data-test="dob"]');
+        await dobField.fill("1999-11-12");
+        await dobField.press('Tab');
+
+
+        // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
+        // ลองกรอกค่ามั่วๆ เข้าไป
+        // await dobField.fill('invalid-date');
+        // await dobField.press('Tab');
+
+        // // ตรวจสอบว่าระบบขึ้น Error จริงไหม (เช็คจาก class 'is-invalid')
+        // await expect(dobField).toHaveClass(/is-invalid/);
+
+        // // ตรวจสอบข้อความแจ้งเตือน (ถ้ามี element ที่แสดงข้อความ error)
+        // const errorMessage = page.locator('#dob-error'); // อ้างอิงจาก aria-describedby
+        // await expect(errorMessage).toBeVisible();
 
 
 

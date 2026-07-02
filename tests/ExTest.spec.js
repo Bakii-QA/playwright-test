@@ -72,7 +72,15 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
     })
 
+    test('TC-04 Register your account',async({page})=>{
 
+
+
+
+
+
+
+    })
 
 
 

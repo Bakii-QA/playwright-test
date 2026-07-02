@@ -17,7 +17,6 @@ const config =({
   timeout: 40 * 1000,
   expect:{
     timeout: 40 * 1000,
-
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,7 +27,11 @@ const config =({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  //reporter: 'html',
+  reporter: [
+    ['html']
+   // ['allure-playwright']
+  ],
   /* หากไม่อยากให้เเสดง reporter: [['html',{open:'never'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -38,6 +41,14 @@ const config =({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     //trace: 'on',
     headless: false,
+    /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
+    video: 'on', 
+    /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
+    screenshot: 'on',
+    trace: 'on-first-retry',
+    contextOptions: {
+      recordVideo: { dir: 'test-results/' }
+    },
   },
 
   /* Configure projects for major browsers */
@@ -91,16 +102,17 @@ const config =({
   //   video: 'retain-on-failure',
   // }
 
-  use: {
-    /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
-    video: 'on', 
-    /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
-    screenshot: 'on',
-    trace: 'on-first-retry',
-    contextOptions: {
-      recordVideo: { dir: 'test-results/' }
-    },
-  }
+  // ซ้ำปิดออก
+  // use: {
+  //   /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
+  //   video: 'on', 
+  //   /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */
+  //   screenshot: 'on',
+  //   trace: 'on-first-retry',
+  //   contextOptions: {
+  //     recordVideo: { dir: 'test-results/' }
+  //   },
+  // }
 //
 
 

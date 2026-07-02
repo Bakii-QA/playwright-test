@@ -63,6 +63,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const submitBtn = page.locator('input[data-test="login-submit"]');
         await submitBtn.scrollIntoViewIfNeeded(); 
         await submitBtn.click();
+        await submitBtn.count();
+        console.log(",มีการคลิกเเล้ว",submitBtn+"ครั้ง");
 
         const count = await page.locator('input[data-test="login-submit"]').count();
         console.log("จำนวนปุ่มที่เจอคือ:", count);

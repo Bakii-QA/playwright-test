@@ -27,7 +27,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
     test('TC03-SignIn Account',async({page})=>{
         await page.locator('[data-test="nav-sign-in"]').click();
         const usernameValue = page.locator('input[type="email"]');
-        usernameValue.fill('banktest@gmail.com');
+        await usernameValue.fill('banktest@gmail.com');
 
         const passwordField = page.locator('input[data-test="password"]');
         await passwordField.fill('123');
@@ -67,7 +67,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const count = await page.locator('input[data-test="login-submit"]').count();
         console.log("จำนวนปุ่มที่เจอคือ:", count);
 
-        const a = await page.locator(".help-block");
+        const a = page.locator('[data-test="login-error"]');
         await expect(a).toBeVisible();
         await expect(a).toContainText("Invalid email or password");
 

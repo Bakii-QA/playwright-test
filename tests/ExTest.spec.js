@@ -92,6 +92,9 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await dobField.fill("1999-11-12");
         await dobField.press('Tab');
 
+        const scroll = page.locator('select[data-test="country"]');
+        await scroll.scrollIntoViewIfNeeded(); 
+        await scroll.selectOption("Thailand");
 
         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
         // ลองกรอกค่ามั่วๆ เข้าไป

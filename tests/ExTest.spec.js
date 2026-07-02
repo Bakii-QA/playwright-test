@@ -111,8 +111,10 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="email"]').fill("bakii@gmail.com");
         await page.locator('input[data-test="password"]').fill("12345");
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
-        await page.getByRole('button[type="submit"]',{hasText:'Register '}).click();
+        await page.locator('button[data-test="register-submit"]').click();
 
+        
+        
 
         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
         // ลองกรอกค่ามั่วๆ เข้าไป

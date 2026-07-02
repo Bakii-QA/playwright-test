@@ -40,7 +40,7 @@ const config =({
     browserName: 'chromium',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     //trace: 'on',
-    headless: false,
+    headless: !process.env.CI ? false : true,    
     /* สั่งให้บันทึกวิดีโอทุกรอบ ไม่ว่าจะผ่านหรือพัง */
     video: 'on', 
     /* ทริคเพิ่มเติม: ถ้าอยากได้รูป Screenshot ตอนเทสผ่านด้วย ให้เปิดตัวนี้ */

@@ -99,6 +99,17 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await scroll.scrollIntoViewIfNeeded(); 
         await scroll.selectOption("Thailand");
 
+        const sc = page.locator('input[data-test="phone"]');
+        await sc.scrollIntoViewIfNeeded();
+
+        await page.locator('input[data-test="postal_code"]').fill("10270");
+        await page.locator('input[data-test="house_number"]').fill("639");
+        await page.locator('input[data-test="street"]').fill("Raikao");
+        await page.locator('input[data-test="postal_code"]').fill("10270")
+
+
+
+
         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
         // ลองกรอกค่ามั่วๆ เข้าไป
         // await dobField.fill('invalid-date');

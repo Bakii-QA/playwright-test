@@ -60,7 +60,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // await page.locator('input[data-test="login-submit"]').click();
 
         //วิธีคลิกปุ่มเมื่อจอเล็ก :2
-        screenLeft clickCount = 0;
+        let clickCount = 0;
         const submitBtn = page.locator('input[data-test="login-submit"]');
         await submitBtn.scrollIntoViewIfNeeded(); 
         await submitBtn.click();

@@ -74,7 +74,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
     test('TC-04 Register your account',async({page})=>{
 
-
+        await page.locator('[data-test="nav-sign-in"]').click();
         const register = await page.locator('a[data-test="register-link"]');
         await register.scrollIntoViewIfNeeded(); 
         await register.click();

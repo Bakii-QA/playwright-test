@@ -60,11 +60,12 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // await page.locator('input[data-test="login-submit"]').click();
 
         //วิธีคลิกปุ่มเมื่อจอเล็ก :2
+        const clickCount = 0;
         const submitBtn = page.locator('input[data-test="login-submit"]');
         await submitBtn.scrollIntoViewIfNeeded(); 
         await submitBtn.click();
-        await submitBtn.count();
-        console.log(",มีการคลิกเเล้ว",submitBtn+"ครั้ง");
+        clickCount++; // บวกค่าเพิ่ม 1
+        console.log("มีการคลิกเเล้ว",clickCount +"ครั้ง");
 
         const count = await page.locator('input[data-test="login-submit"]').count();
         console.log("จำนวนปุ่มที่เจอคือ:", count);

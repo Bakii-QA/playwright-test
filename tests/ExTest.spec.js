@@ -128,7 +128,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
             console.error("สมัครสมาชิกไม่สำเร็จ! ระบบแจ้งว่า:", errorText);
         }
 
-        await page.waitForURL("https://practicesoftwaretesting.com/auth/login",{timeout: 10000 });
+        await page.waitForURL("**/login", { waitUntil: 'load', timeout: 15000 });        
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);
 

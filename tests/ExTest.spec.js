@@ -114,7 +114,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
         await page.locator('button[data-test="register-submit"]').click();
 
-        await page.locator('input[data-test="password"]').fill("@QAtest12345");
+        await page.locator('input[data-test="password"]').fill("@Cloud#Alpha10");
         await page.locator('button[data-test="register-submit"]').click();
 
 

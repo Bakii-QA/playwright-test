@@ -103,10 +103,11 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await sc.scrollIntoViewIfNeeded();
 
         await page.locator('input[data-test="postal_code"]').fill("10270");
-        await page.locator('input[data-test="house_number"]').fill("639");
-        await page.locator('input[data-test="street"]').fill("Raikao");
-        await page.locator('input[data-test="city"]').fill("Prachuap");
-        await page.locator('input[data-test="state"]').fill("Samroiyod");
+        await page.locator('input[data-test="house_number"]').fill("85/54");
+        await page.locator('input[data-test="street"]').toHaveValue('Abel Fords', { timeout: 5000 });
+        await page.locator('input[data-test="city"]').toHaveValue('West Melany', { timeout: 5000 });
+        await page.locator('input[data-test="state"]').toHaveValue('Pennsylvania', { timeout: 5000 });
+        await page.pause();
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill("bakii@gmail.com");
         await page.locator('input[data-test="password"]').fill("12345");

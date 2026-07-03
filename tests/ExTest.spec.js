@@ -111,7 +111,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         const timestamp = Date.now();
         const email = `testuser_${timestamp}@example.com`;
-        const password = "@Cloud#Alpha10";
+        const password = `@Cloud#Alpha10_${timestamp}`;
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill(email);
         console.log("ค่าของ email คือ",email);

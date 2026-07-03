@@ -109,7 +109,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await expect(page.locator('input[data-test="state"]')).toHaveValue('Pennsylvania', { timeout: 5000 });
         await page.pause();
 
-        const email = "bakii" + Date.now() + "@gmail.com";
+        const timestamp = Date.now();
+        const email = `testuser_${timestamp}@example.com`;
         const password = "@Cloud#Alpha10";
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill(email);

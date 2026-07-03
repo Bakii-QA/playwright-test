@@ -158,8 +158,8 @@ const cardTitle = page.locator(".card-title")
       if(domain){
          await page.locator("#username").fill(domain);
          await page.pause();
-         console.log(await page.locator("#username").textContent());  // textContent จะเป็นการดึงค่าจากหน้าจอนั้นๆ
-         console.log(await page.locator("#username").inputValue());  // inputValue จะเป็นการดึงค่าจากหน้าจอสู่หน้าจอเเบบป้อนค่าเข้าไป
+         console.log(await page.locator("#username").textContent());  // ใช้สำหรับดึง "ข้อความที่อยู่ภายใน" แท็ก (Content)
+         console.log(await page.locator("#username").inputValue());  // ใช้สำหรับดึง "ค่าที่ถูกกรอกหรือระบุไว้ใน Attribute" ของช่อง Input
 
          console.log("ดึงค่าสำเร็จ")
       } else {

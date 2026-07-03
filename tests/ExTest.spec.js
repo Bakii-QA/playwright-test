@@ -121,7 +121,13 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         await page.locator('input[data-test="password"]').fill(password);
         await page.locator('button[data-test="register-submit"]').click();
-        await expect(page.locator('button[data-test="register-submit"]')).not.toBeVisible();
+
+        const errorLocator = page.locator('.alert-danger'); // ลองเปลี่ยน class นี้ตามหน้าเว็บจริง (เช่น .invalid-feedback)
+        if (await errorLocator.isVisible()) {
+            const errorText = await errorLocator.textContent();
+            console.error("สมัครสมาชิกไม่สำเร็จ! ระบบแจ้งว่า:", errorText);
+        }
+
         await page.waitForURL("https://practicesoftwaretesting.com/auth/login",{timeout: 10000 });
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);

@@ -120,6 +120,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         await page.locator('input[data-test="password"]').fill(password);
         await page.locator('button[data-test="register-submit"]').click();
+        await expect(page.locator('button[data-test="register-submit"]')).not.toBeVisible();
         await page.waitForURL("https://practicesoftwaretesting.com/auth/login",{timeout: 10000 });
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);

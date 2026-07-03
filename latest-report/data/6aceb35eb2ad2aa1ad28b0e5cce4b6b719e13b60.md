@@ -1,0 +1,540 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ExTest.spec.js >> ทดสอบการไหล Flow >> TC-04 Register your account
+- Location: tests/ExTest.spec.js:85:5
+
+# Error details
+
+```
+Error: ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - text: View the
+    - link "Documentation" [ref=e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=e10] [cursor=pointer]
+    - navigation [ref=e11]:
+      - generic [ref=e12]:
+        - link "Practice Software Testing - Toolshop" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e14]
+        - generic [ref=e32]:
+          - menubar "Main menu" [ref=e33]:
+            - menuitem "Home" [ref=e34]:
+              - link "Home" [ref=e35] [cursor=pointer]:
+                - /url: /
+            - menuitem "Categories" [ref=e36]:
+              - button "Categories" [ref=e37] [cursor=pointer]
+            - menuitem "Contact" [ref=e38]:
+              - link "Contact" [ref=e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem "Sign in" [ref=e40]:
+              - link "Sign in" [ref=e41] [cursor=pointer]:
+                - /url: /auth/login
+          - button "Select language" [ref=e43] [cursor=pointer]:
+            - img [ref=e45]
+            - text: EN
+  - generic [ref=e51]:
+    - heading "Customer registration" [level=3] [ref=e52]
+    - generic [ref=e54]:
+      - generic [ref=e56]:
+        - generic [ref=e57]: First name
+        - textbox "First name" [ref=e58]:
+          - /placeholder: First name *
+          - text: Baaki-QA
+      - generic [ref=e60]:
+        - generic [ref=e61]: Last name
+        - textbox "Last name" [ref=e62]:
+          - /placeholder: Your last name *
+          - text: Engineer
+      - generic [ref=e63]:
+        - generic [ref=e64]: Date of Birth *
+        - textbox "Date of Birth *" [ref=e65]:
+          - /placeholder: YYYY-MM-DD
+          - text: 1999-11-12
+      - generic [ref=e67]:
+        - generic [ref=e68]: Country
+        - combobox "Country" [ref=e69]:
+          - option "Albania"
+          - option "Åland Islands"
+          - option "Algeria"
+          - option "American Samoa"
+          - option "Andorra"
+          - option "Angola"
+          - option "Anguilla"
+          - option "Antarctica"
+          - option "Antigua and Barbuda"
+          - option "Argentina"
+          - option "Armenia"
+          - option "Aruba"
+          - option "Australia"
+          - option "Austria"
+          - option "Azerbaijan"
+          - option "Bahamas (the)"
+          - option "Bahrain"
+          - option "Bangladesh"
+          - option "Barbados"
+          - option "Belarus"
+          - option "Belgium"
+          - option "Belize"
+          - option "Benin"
+          - option "Bermuda"
+          - option "Bhutan"
+          - option "Bolivia (Plurinational State of)"
+          - option "Bonaire, Sint Eustatius and Saba"
+          - option "Bosnia and Herzegovina"
+          - option "Botswana"
+          - option "Bouvet Island"
+          - option "Brazil"
+          - option "British Indian Ocean Territory (the)"
+          - option "Brunei Darussalam"
+          - option "Bulgaria"
+          - option "Burkina Faso"
+          - option "Burundi"
+          - option "Cabo Verde"
+          - option "Cambodia"
+          - option "Cameroon"
+          - option "Canada"
+          - option "Cayman Islands (the)"
+          - option "Central African Republic (the)"
+          - option "Chad"
+          - option "Chile"
+          - option "China"
+          - option "Christmas Island"
+          - option "Cocos (Keeling) Islands (the)"
+          - option "Colombia"
+          - option "Comoros (the)"
+          - option "Congo (the Democratic Republic of the)"
+          - option "Congo (the)"
+          - option "Cook Islands (the)"
+          - option "Costa Rica"
+          - option "Croatia"
+          - option "Cuba"
+          - option "Curaçao"
+          - option "Cyprus"
+          - option "Czechia"
+          - option "Côte d'Ivoire"
+          - option "Denmark"
+          - option "Djibouti"
+          - option "Dominica"
+          - option "Dominican Republic (the)"
+          - option "Ecuador"
+          - option "Egypt"
+          - option "El Salvador"
+          - option "Equatorial Guinea"
+          - option "Eritrea"
+          - option "Estonia"
+          - option "Eswatini"
+          - option "Ethiopia"
+          - option "Falkland Islands (the) [Malvinas]"
+          - option "Faroe Islands (the)"
+          - option "Fiji"
+          - option "Finland"
+          - option "France"
+          - option "French Guiana"
+          - option "French Polynesia"
+          - option "French Southern Territories (the)"
+          - option "Gabon"
+          - option "Gambia (the)"
+          - option "Georgia"
+          - option "Germany"
+          - option "Ghana"
+          - option "Gibraltar"
+          - option "Greece"
+          - option "Greenland"
+          - option "Grenada"
+          - option "Guadeloupe"
+          - option "Guam"
+          - option "Guatemala"
+          - option "Guernsey"
+          - option "Guinea"
+          - option "Guinea-Bissau"
+          - option "Guyana"
+          - option "Haiti"
+          - option "Heard Island and McDonald Islands"
+          - option "Holy See (the)"
+          - option "Honduras"
+          - option "Hong Kong"
+          - option "Hungary"
+          - option "Iceland"
+          - option "India"
+          - option "Indonesia"
+          - option "Iran (Islamic Republic of)"
+          - option "Iraq"
+          - option "Ireland"
+          - option "Isle of Man"
+          - option "Israel"
+          - option "Italy"
+          - option "Jamaica"
+          - option "Japan"
+          - option "Jersey"
+          - option "Jordan"
+          - option "Kazakhstan"
+          - option "Kenya"
+          - option "Kiribati"
+          - option "Korea (the Democratic People's Republic of)"
+          - option "Korea (the Republic of)"
+          - option "Kuwait"
+          - option "Kyrgyzstan"
+          - option "Lao People's Democratic Republic (the)"
+          - option "Latvia"
+          - option "Lebanon"
+          - option "Lesotho"
+          - option "Liberia"
+          - option "Libya"
+          - option "Liechtenstein"
+          - option "Lithuania"
+          - option "Luxembourg"
+          - option "Macao"
+          - option "Madagascar"
+          - option "Malawi"
+          - option "Malaysia"
+          - option "Maldives"
+          - option "Mali"
+          - option "Malta"
+          - option "Marshall Islands (the)"
+          - option "Martinique"
+          - option "Mauritania"
+          - option "Mauritius"
+          - option "Mayotte"
+          - option "Mexico"
+          - option "Micronesia (Federated States of)"
+          - option "Moldova (the Republic of)"
+          - option "Monaco"
+          - option "Mongolia"
+          - option "Montenegro"
+          - option "Montserrat"
+          - option "Morocco"
+          - option "Mozambique"
+          - option "Myanmar"
+          - option "Namibia"
+          - option "Nauru"
+          - option "Nepal"
+          - option "Netherlands (the)"
+          - option "New Caledonia"
+          - option "New Zealand"
+          - option "Nicaragua"
+          - option "Niger (the)"
+          - option "Nigeria"
+          - option "Niue"
+          - option "Norfolk Island"
+          - option "Northern Mariana Islands (the)"
+          - option "Norway"
+          - option "Oman"
+          - option "Pakistan"
+          - option "Palau"
+          - option "Palestine, State of"
+          - option "Panama"
+          - option "Papua New Guinea"
+          - option "Paraguay"
+          - option "Peru"
+          - option "Philippines (the)"
+          - option "Pitcairn"
+          - option "Poland"
+          - option "Portugal"
+          - option "Puerto Rico"
+          - option "Qatar"
+          - option "Republic of North Macedonia"
+          - option "Romania"
+          - option "Russian Federation (the)"
+          - option "Rwanda"
+          - option "Réunion"
+          - option "Saint Barthélemy"
+          - option "Saint Helena, Ascension and Tristan da Cunha"
+          - option "Saint Kitts and Nevis"
+          - option "Saint Lucia"
+          - option "Saint Martin (French part)"
+          - option "Saint Pierre and Miquelon"
+          - option "Saint Vincent and the Grenadines"
+          - option "Samoa"
+          - option "San Marino"
+          - option "Sao Tome and Principe"
+          - option "Saudi Arabia"
+          - option "Senegal"
+          - option "Serbia"
+          - option "Seychelles"
+          - option "Sierra Leone"
+          - option "Singapore"
+          - option "Sint Maarten (Dutch part)"
+          - option "Slovakia"
+          - option "Slovenia"
+          - option "Solomon Islands"
+          - option "Somalia"
+          - option "South Africa"
+          - option "South Georgia and the South Sandwich Islands"
+          - option "South Sudan"
+          - option "Spain"
+          - option "Sri Lanka"
+          - option "Sudan (the)"
+          - option "Suriname"
+          - option "Svalbard and Jan Mayen"
+          - option "Sweden"
+          - option "Switzerland"
+          - option "Syrian Arab Republic"
+          - option "Taiwan (Province of China)"
+          - option "Tajikistan"
+          - option "Tanzania, United Republic of"
+          - option "Thailand" [selected]
+          - option "Timor-Leste"
+          - option "Togo"
+          - option "Tokelau"
+          - option "Tonga"
+          - option "Trinidad and Tobago"
+          - option "Tunisia"
+          - option "Turkey"
+          - option "Turkmenistan"
+          - option "Turks and Caicos Islands (the)"
+          - option "Tuvalu"
+          - option "Uganda"
+          - option "Ukraine"
+          - option "United Arab Emirates (the)"
+          - option "United Kingdom of Great Britain and Northern Ireland (the)"
+          - option "United States Minor Outlying Islands (the)"
+          - option "United States of America (the)"
+          - option "Uruguay"
+          - option "Uzbekistan"
+          - option "Vanuatu"
+          - option "Venezuela (Bolivarian Republic of)"
+          - option "Viet Nam"
+          - option "Virgin Islands (British)"
+          - option "Virgin Islands (U.S.)"
+          - option "Wallis and Futuna"
+          - option "Western Sahara"
+          - option "Yemen"
+          - option "Zambia"
+          - option "Zimbabwe"
+      - generic [ref=e70]: Choose your country and enter the postal code and house number. Street, city and state will be filled in automatically.
+      - generic [ref=e72]:
+        - generic [ref=e73]: Postal code
+        - textbox "Postal code" [ref=e74]:
+          - /placeholder: Your Postcode *
+          - text: "10270"
+      - generic [ref=e76]:
+        - generic [ref=e77]: House number
+        - textbox "House number" [ref=e78]:
+          - /placeholder: e.g. 42 *
+          - text: 85/54
+      - generic [ref=e79]:
+        - generic [ref=e80]: Street
+        - textbox "Street" [ref=e81]:
+          - /placeholder: Your Street *
+          - text: Abel Fords
+      - generic [ref=e83]:
+        - generic [ref=e84]: City
+        - textbox "City" [ref=e85]:
+          - /placeholder: Your City *
+          - text: West Melany
+      - generic [ref=e87]:
+        - generic [ref=e88]: State
+        - textbox "State" [ref=e89]:
+          - /placeholder: Your State *
+          - text: Pennsylvania
+      - generic [ref=e90]:
+        - generic [ref=e91]: Phone
+        - textbox "Phone" [ref=e92]:
+          - /placeholder: Your phone *
+          - text: "0893443321"
+      - generic [ref=e93]:
+        - generic [ref=e94]: Email address
+        - textbox "Email address" [ref=e95]:
+          - /placeholder: Your email *
+          - text: testuser_1783074043940@example.com
+      - generic [ref=e96]:
+        - generic [ref=e97]: Password
+        - generic [ref=e99]:
+          - textbox "Password" [ref=e100]:
+            - /placeholder: Your password
+            - text: "@Cloud#Alpha10_1783074043940"
+          - button [ref=e102] [cursor=pointer]:
+            - img [ref=e104]
+        - generic [ref=e106]:
+          - text: "Your password must:"
+          - list [ref=e107]:
+            - list [ref=e108]:
+              - listitem [ref=e109]: Be at least 8 characters long
+              - listitem [ref=e110]: Contain both uppercase and lowercase letters
+              - listitem [ref=e111]: Include at least one number
+              - listitem [ref=e112]: "Have at least one special symbol (e.g., @, #, $, etc.)"
+        - generic [ref=e113]:
+          - text: "Password strength:"
+          - generic [ref=e114]:
+            - generic [ref=e115]: Weak
+            - generic [ref=e116]: Moderate
+            - generic [ref=e117]: Strong
+            - generic [ref=e118]: Very Strong
+            - generic [ref=e119]: Excellent
+      - button "Register" [active] [ref=e122] [cursor=pointer]
+  - paragraph [ref=e125]:
+    - text: This is a DEMO application (
+    - link "GitHub repo" [ref=e126] [cursor=pointer]:
+      - /url: https://github.com/testsmith-io/practice-software-testing
+    - text: ), used for software testing training purpose. |
+    - link "Privacy Policy" [ref=e127] [cursor=pointer]:
+      - /url: /privacy
+    - text: "| Banner photo by"
+    - link "Barn Images" [ref=e128] [cursor=pointer]:
+      - /url: https://unsplash.com/@barnimages
+    - text: "on"
+    - link "Unsplash" [ref=e129] [cursor=pointer]:
+      - /url: https://unsplash.com/photos/t5YUoHW6zRo
+    - text: .
+  - button "Open chat" [ref=e131] [cursor=pointer]:
+    - img [ref=e132]
+```
+
+# Test source
+
+```ts
+  34  |         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
+  35  | 
+  36  | 
+  37  |         const currentValue = await passwordField.inputValue();
+  38  |         await passwordField.fill(currentValue+'45678910');
+  39  | 
+  40  | 
+  41  |         const finalValue = await passwordField.inputValue();
+  42  |         // 3. แสดงผลค่าที่ได้
+  43  |         console.log("ค่าของ Password คือ", finalValue);
+  44  | 
+  45  |         if (!usernameValue || !finalValue) {
+  46  |             console.log("Username หรือ Password ว่างอยู่");
+  47  |         } else {
+  48  |             console.log("Username และ Password มีค่าครบถ้วน");
+  49  |         }
+  50  |         
+  51  |         //page.keyboard.type('123'); เป็นคำสั่งพิมต่อจากข้อความเดิมเช่น
+  52  |         // await page.keyboard.type('123'); // พิมพ์ 123
+  53  |         // await page.locator('input[type="button"]').click(); // กดปุ่ม
+  54  |         // await page.keyboard.type('456'); // พิมพ์ 456 ต่อเข้าไป (ผลลัพธ์จะเป็น 123456)
+  55  | 
+  56  |         await page.locator('button', { has: page.locator('[data-icon="eye-slash"]') }).click();
+  57  | 
+  58  |         //วิธีคลิกปุ่มเมื่อจอเล็ก :1 
+  59  |         // await page.mouse.wheel(0, 500);
+  60  |         // await page.locator('input[data-test="login-submit"]').click();
+  61  | 
+  62  |         //วิธีคลิกปุ่มเมื่อจอเล็ก :2
+  63  |         let clickCount = 0;
+  64  |         const submitBtn = page.locator('input[data-test="login-submit"]');
+  65  |         await submitBtn.scrollIntoViewIfNeeded(); 
+  66  |         await submitBtn.click();
+  67  |         clickCount++; // บวกค่าเพิ่ม 1
+  68  |         console.log("มีการคลิกเเล้ว",clickCount +"ครั้ง");
+  69  | 
+  70  |         const count = await page.locator('input[data-test="login-submit"]').count();
+  71  |         console.log("จำนวนปุ่มที่เจอคือ:", count);
+  72  | 
+  73  |         const a = page.locator('[data-test="login-error"]');
+  74  |         await expect(a).toBeVisible();
+  75  |         await expect(a).toContainText("Invalid email or password");
+  76  | 
+  77  |         // ใช้ toHaveText ถ้าต้องการเช็คว่าข้อความตรงกันแบบเป๊ะๆ
+  78  |        // await expect(a).toHaveText("Invalid email or password");
+  79  |         
+  80  |         // หรือใช้ toContainText ถ้าต้องการเช็คแค่ว่ามีข้อความนี้ปรากฏอยู่ (แนะนำตัวนี้มากกว่า เพราะยืดหยุ่นกว่า)
+  81  |        // await expect(a).toContainText("Invalid email or password");
+  82  | 
+  83  |     })
+  84  | 
+  85  |     test('TC-04 Register your account',async({page})=>{
+  86  | 
+  87  |         await page.locator('[data-test="nav-sign-in"]').click();
+  88  |         const register = await page.locator('a[data-test="register-link"]');
+  89  |         await register.scrollIntoViewIfNeeded(); 
+  90  |         await register.click();
+  91  |         await page.locator('input[data-test="first-name"]').fill("Baaki-QA");
+  92  |         await page.locator('input[data-test="last-name"]').fill("Engineer");
+  93  | 
+  94  |         const dobField = page.locator('[data-test="dob"]');
+  95  |         await dobField.fill("1999-11-12");
+  96  |         await dobField.press('Tab');
+  97  | 
+  98  |         const scroll = page.locator('select[data-test="country"]');
+  99  |         await scroll.scrollIntoViewIfNeeded(); 
+  100 |         await scroll.selectOption("Thailand");
+  101 | 
+  102 |         const sc = page.locator('input[data-test="phone"]');
+  103 |         await sc.scrollIntoViewIfNeeded();
+  104 | 
+  105 |         await page.locator('input[data-test="postal_code"]').fill("10270");
+  106 |         await page.locator('input[data-test="house_number"]').fill("85/54");
+  107 |         await expect(page.locator('input[data-test="street"]')).toHaveValue('Abel Fords', { timeout: 5000 });
+  108 |         await expect(page.locator('input[data-test="city"]')).toHaveValue('West Melany', { timeout: 5000 });
+  109 |         await expect(page.locator('input[data-test="state"]')).toHaveValue('Pennsylvania', { timeout: 5000 });
+  110 |         await page.pause();
+  111 | 
+  112 |         const timestamp = Date.now();
+  113 |         const email = `testuser_${timestamp}@example.com`;
+  114 |         const password = `@Cloud#Alpha10_${timestamp}`;
+  115 |         await page.locator('input[data-test="phone"]').fill("0893443321");
+  116 |         await page.locator('input[data-test="email"]').fill(email);
+  117 |         console.log("ค่าของ email คือ",email);
+  118 |         await page.locator('input[data-test="password"]').fill("12345");
+  119 |         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
+  120 |         await page.locator('button[data-test="register-submit"]').click();
+  121 | 
+  122 |         await page.locator('input[data-test="password"]').fill(password);
+  123 |         await page.locator('button[data-test="register-submit"]').click();
+  124 | 
+  125 | 
+  126 |         await page.screenshot({ path: 'debug-after-click.png' }); // แคปไว้ดูว่าหน้าเว็บเป็นไง
+  127 | 
+  128 |         // 3. ตรวจสอบ URL ปัจจุบัน
+  129 |         const currentUrl = page.url();
+  130 |         console.log("URL ปัจจุบันคือ:", currentUrl);
+  131 | 
+  132 |         // 4. ถ้า URL ยังไม่เปลี่ยน แสดงว่า Register ไม่ผ่าน
+  133 |         if (currentUrl.includes('/auth/register')) {
+> 134 |             throw new Error("ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ");
+      |                   ^ Error: ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ
+  135 |         }
+  136 | 
+  137 |         await page.locator('input[data-test="email"]').fill(email);
+  138 |         await page.locator('input[data-test="password"]').fill(password);
+  139 | 
+  140 |         
+  141 |         
+  142 |         
+  143 | 
+  144 |         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
+  145 |         // ลองกรอกค่ามั่วๆ เข้าไป
+  146 |         // await dobField.fill('invalid-date');
+  147 |         // await dobField.press('Tab');
+  148 | 
+  149 |         // // ตรวจสอบว่าระบบขึ้น Error จริงไหม (เช็คจาก class 'is-invalid')
+  150 |         // await expect(dobField).toHaveClass(/is-invalid/);
+  151 | 
+  152 |         // // ตรวจสอบข้อความแจ้งเตือน (ถ้ามี element ที่แสดงข้อความ error)
+  153 |         // const errorMessage = page.locator('#dob-error'); // อ้างอิงจาก aria-describedby
+  154 |         // await expect(errorMessage).toBeVisible();
+  155 | 
+  156 | 
+  157 | 
+  158 | 
+  159 | 
+  160 |     })
+  161 | 
+  162 | 
+  163 | 
+  164 | 
+  165 | 
+  166 | 
+  167 | 
+  168 | })
+```

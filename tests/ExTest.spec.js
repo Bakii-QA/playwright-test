@@ -122,13 +122,18 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="password"]').fill(password);
         await page.locator('button[data-test="register-submit"]').click();
 
-        const errorLocator = page.locator('.alert-danger'); // ลองเปลี่ยน class นี้ตามหน้าเว็บจริง (เช่น .invalid-feedback)
-        if (await errorLocator.isVisible()) {
-            const errorText = await errorLocator.textContent();
-            console.error("สมัครสมาชิกไม่สำเร็จ! ระบบแจ้งว่า:", errorText);
+
+        await page.screenshot({ path: 'debug-after-click.png' }); // แคปไว้ดูว่าหน้าเว็บเป็นไง
+
+        // 3. ตรวจสอบ URL ปัจจุบัน
+        const currentUrl = page.url();
+        console.log("URL ปัจจุบันคือ:", currentUrl);
+
+        // 4. ถ้า URL ยังไม่เปลี่ยน แสดงว่า Register ไม่ผ่าน
+        if (currentUrl.includes('/auth/register')) {
+            throw new Error("ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ");
         }
 
-        await page.waitForURL("**/login", { waitUntil: 'load', timeout: 15000 });        
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);
 

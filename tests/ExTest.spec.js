@@ -108,16 +108,24 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await expect(page.locator('input[data-test="city"]')).toHaveValue('West Melany', { timeout: 5000 });
         await expect(page.locator('input[data-test="state"]')).toHaveValue('Pennsylvania', { timeout: 5000 });
         await page.pause();
+
+        const email = "bakii@gmail.com";
+        const password = "@Cloud#Alpha10";
         await page.locator('input[data-test="phone"]').fill("0893443321");
-        await page.locator('input[data-test="email"]').fill("bakii@gmail.com");
+        await page.locator('input[data-test="email"]').fill(email);
+        console.log("ค่าของ email คือ",email);
         await page.locator('input[data-test="password"]').fill("12345");
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
         await page.locator('button[data-test="register-submit"]').click();
 
-        await page.locator('input[data-test="password"]').fill("@Cloud#Alpha10");
+        await page.locator('input[data-test="password"]').fill(password);
         await page.locator('button[data-test="register-submit"]').click();
 
+        await page.goto("https://practicesoftwaretesting.com/auth/login");
+        await page.locator('input[data-test="email"]').fill(email);
+        await page.locator('input[data-test="password"]').fill(password);
 
+        
         
         
 

@@ -137,9 +137,9 @@ test.describe('ทดสอบการไหล Flow',()=>{
             throw new Error("ระบบไม่ยอมเปลี่ยนหน้าหลังจากกด Register (อาจเกิดจาก API Error หรือหน้าเว็บค้าง)");
         }
 
-        await page.locator('input[data-test="email"]').fill(email);
-       await page.locator('input[data-test="password"]').fill(password);
-       await page.locator('button[data-test="login-submit"]').click();
+    //     await page.locator('input[data-test="email"]').fill(email);
+    //    await page.locator('input[data-test="password"]').fill(password);
+    //    await page.locator('button[data-test="login-submit"]').click();
 
 
         

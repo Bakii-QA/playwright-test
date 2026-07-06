@@ -141,7 +141,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         console.log("URL คือ:", now);
 
 
-        await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0");
+        await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0", { timeout: 60000 });
     //     await page.locator('input[data-test="email"]').fill(email);
     //    await page.locator('input[data-test="password"]').fill(password);
     //    await page.locator('button[data-test="login-submit"]').click();

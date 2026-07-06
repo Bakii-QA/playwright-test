@@ -111,7 +111,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         const timestamp = Date.now();
         const email = `testuser_${timestamp}@example.com`;
-        const password = `@Cloud#Alpha10_${timestamp}`;
+        const password = "Password123!";
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill(email);
         console.log("ค่าของ email คือ",email);
@@ -133,8 +133,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
             throw new Error("ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ");
         }
 
-        await page.locator('input[data-test="email"]').fill(email);
-        await page.locator('input[data-test="password"]').fill(password);
+        //await page.locator('input[data-test="email"]').fill(email);
+       // await page.locator('input[data-test="password"]').fill(password);
 
         
         

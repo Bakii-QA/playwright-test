@@ -130,13 +130,13 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         // 4. ถ้า URL ยังไม่เปลี่ยน แสดงว่า Register ไม่ผ่าน
         try {
-            await page.waitForURL('**/login', { timeout: 10000 }); 
+            await page.waitForURL('https://practicesoftwaretesting.com/auth/login', { timeout: 10000 }); 
         } catch (error) {
             // ถ่ายรูปตอนที่รอไม่สำเร็จเพื่อดูหน้าตาของหน้าเว็บหลังจากพยายามสมัครแล้ว
             await page.screenshot({ path: 'failure-state.png' });
             throw new Error("ระบบไม่ยอมเปลี่ยนหน้าหลังจากกด Register (อาจเกิดจาก API Error หรือหน้าเว็บค้าง)");
         }
-        console.log("URL ปัจจุบันคือ:", currentUrl);
+        console.log("URL คือ:", currentUrl);
     //     await page.locator('input[data-test="email"]').fill(email);
     //    await page.locator('input[data-test="password"]').fill(password);
     //    await page.locator('button[data-test="login-submit"]').click();

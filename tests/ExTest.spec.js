@@ -129,8 +129,12 @@ test.describe('ทดสอบการไหล Flow',()=>{
         console.log("URL ปัจจุบันคือ:", currentUrl);
 
         // 4. ถ้า URL ยังไม่เปลี่ยน แสดงว่า Register ไม่ผ่าน
-        if (currentUrl.includes('/auth/register')) {
-            throw new Error("ระบบไม่ยอมเปลี่ยนหน้า! คุณอาจกรอกข้อมูลไม่ครบหรืออีเมลซ้ำ");
+        try {
+            await page.waitForURL('**/login', { timeout: 10000 }); 
+        } catch (error) {
+            // ถ่ายรูปตอนที่รอไม่สำเร็จเพื่อดูหน้าตาของหน้าเว็บหลังจากพยายามสมัครแล้ว
+            await page.screenshot({ path: 'failure-state.png' });
+            throw new Error("ระบบไม่ยอมเปลี่ยนหน้าหลังจากกด Register (อาจเกิดจาก API Error หรือหน้าเว็บค้าง)");
         }
 
         //await page.locator('input[data-test="email"]').fill(email);

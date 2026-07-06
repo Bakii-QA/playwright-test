@@ -115,12 +115,11 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill(email);
         console.log("ค่าของ email คือ",email);
-        await page.locator('input[data-test="password"]').fill("12345");
+        await page.locator('input[data-test="password"]').fill(password);
+
         await page.locator('button', { has: page.locator('[data-icon="eye"]') }).click();
         await page.locator('button[data-test="register-submit"]').click();
 
-        await page.locator('input[data-test="password"]').fill(password);
-        await page.locator('button[data-test="register-submit"]').click();
 
 
         await page.screenshot({ path: 'debug-after-click.png' }); // แคปไว้ดูว่าหน้าเว็บเป็นไง

@@ -192,10 +192,10 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="password"]').fill(data.password);
         await page.locator('input[data-test="login-submit"]').click();
 
-     })   
-
      await page.locator('button[data-test="nav-categories"]').click();
      await page.locator('[role="menuitem"]',{hasText:'Power Tools'}).click();
+     })   
+
 
 
 

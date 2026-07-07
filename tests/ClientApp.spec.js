@@ -37,7 +37,7 @@ test('Browser Context playwright test', async ({ page }) => {
   
    await page.getByRole('textbox', { name: 'search' }).fill("iphone 13 pro");
    // ให้หลุดโฟกัสจากช่อง
-   await page.getByRole('textbox', { name: 'search' }).blur();
+   await page.getByRole('textbox', { name: 'search' }).press('Enter');
    // สั่งให้ไปคลิกตรงพื้นที่ว่างๆ (Body ของหน้าเว็บ) เพื่อถอนเมาส์ออกมา
    await page.locator('body').click();
 
@@ -50,7 +50,7 @@ test('Browser Context playwright test', async ({ page }) => {
 // 💡 เอาไปใช้รอเพื่อให้แน่ใจว่าสินค้าโหลดขึ้นมาแล้ว (ใช้แทน networkidle ได้เลย)
    await expect(productContainer).toBeVisible();
 
-   const title = await page.locator(".card-body b").allTextContents();
+   const title = await page.locator(".card-body b:visible").allTextContents();
    console.log("สินค้าทั้งหมดมี",title);
 
 });

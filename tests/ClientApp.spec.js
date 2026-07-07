@@ -22,7 +22,7 @@ const productsName = 'ZARA COAT 3' ;
   const title = await page.locator(".card-body b").allTextContents();
   console.log(title);
   const count = products.count();
-    for(i=0;i<count;i++){
+    for(let i=0;i<count;i++){
       if(await products.nth(i).locator("b").textContent() === productsName){
         // add to cart
         await products.nth(i).locator("text =  Add To Cart").click();
@@ -51,7 +51,7 @@ test('Browser Context playwright test', async ({ page }) => {
    await expect(productContainer).toBeVisible();
 
    const title = await page.locator(".card-body b").allTextContents();
-   console.log(title);
+   console.log("สินค้าทั้งหมดมี",title);
 
 });
 

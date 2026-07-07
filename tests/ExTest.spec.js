@@ -1,8 +1,10 @@
 const {expect , test ,beforeEach} = require('@playwright/test')
+const fs = require('fs'); // import โมดูลจัดการไฟล์
 //(Flaky Test คือเทสต์ที่ เดี๋ยวผ่าน เดี๋ยวพัง โดยที่ไม่ได้แก้โค้ดเลย)
         const timestamp = Date.now();
-        const email = `testuser_${timestamp}@example.com`;
-        const password = `UserPass@${Date.now()}!12323`;
+        let email;
+        let password;
+        
 
 
 test.describe('ทดสอบการไหล Flow',()=>{
@@ -94,6 +96,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
     })
 
     test('TC-04 Register your account',async({page})=>{
+        email = `testuser_${timestamp}@example.com`;
+        password = `UserPass@${Date.now()}!12323`;
 
         await page.locator('[data-test="nav-sign-in"]').click();
         const register = await page.locator('a[data-test="register-link"]');
@@ -149,6 +153,17 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         console.log("URL คือ:", now);
 
+        const dataToSave = {
+            email: email,
+            password: password,
+            createdAt: new Date().toISOString()
+        };
+        
+        // บันทึกไฟล์ชื่อ user-data.json
+        fs.writeFileSync('user-data.json', JSON.stringify(dataToSave, null, 2));
+        console.log('ข้อมูลถูกบันทึกลงไฟล์ user-data.json แล้ว!');
+        
+
     //     await page.locator('input[data-test="email"]').fill(email);
     //    await page.locator('input[data-test="password"]').fill(password);
     //    await page.locator('button[data-test="login-submit"]').click();
@@ -167,9 +182,15 @@ test.describe('ทดสอบการไหล Flow',()=>{
     })
     test('TC05-ลงชื่อเข้าใช้งาน', async ({page})=>{
         await page.locator('a[data-test="nav-sign-in"]').click();
+
+        const data = JSON.parse(fs.readFileSync('user-data.json', 'utf-8'));
+    
+        console.log('TC05 กำลังใช้ email จากไฟล์:', data.email);
+        await page.locator('input[data-test="email"]').fill(data.email);
+        await page.locator('input[data-test="password"]').fill(data.password);
+
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);
-        await page.pause();
 
 
 

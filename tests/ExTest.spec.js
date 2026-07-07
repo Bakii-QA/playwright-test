@@ -140,16 +140,21 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
         console.log("URL คือ:", now);
 
-
-        
-        await page.goto('https://practicesoftwaretesting.com/auth/login');
-        await expect(page).toHaveTitle("Practice Software Testing - Toolshop - v5.0", { timeout: 60000 });
     //     await page.locator('input[data-test="email"]').fill(email);
     //    await page.locator('input[data-test="password"]').fill(password);
     //    await page.locator('button[data-test="login-submit"]').click();
 
 
-        
+     test('TC05=ลงชื่อเข้าใช้งาน',async({page})=>{
+        await page.locator('input[data-test="email"]').fill(email);
+        await page.locator('input[data-test="password"]').fill(password);
+        await page.pause();
+
+
+
+
+
+     })   
         
         
 

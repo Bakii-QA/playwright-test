@@ -1,8 +1,19 @@
 const {expect , test ,beforeEach} = require('@playwright/test')
 //(Flaky Test คือเทสต์ที่ เดี๋ยวผ่าน เดี๋ยวพัง โดยที่ไม่ได้แก้โค้ดเลย)
+        const timestamp = Date.now();
+        const email = `testuser_${timestamp}@example.com`;
+        const password = `UserPass@${Date.now()}!12323`;
+
+
 test.describe('ทดสอบการไหล Flow',()=>{
     beforeEach('Start',async ({page})=> {
         await page.goto("https://practicesoftwaretesting.com/");
+
+
+        // const testData = {
+        //     email: 'user@test.com',
+        //     password: 'password123'
+        // }; //ดึงไปใช้ก็จะ testData.eamil
     })
 
     test('TC01-open Testing Guide For Test',async({page})=>{
@@ -109,9 +120,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await expect(page.locator('input[data-test="state"]')).toHaveValue('Pennsylvania', { timeout: 5000 });
         await page.pause();
 
-        const timestamp = Date.now();
-        const email = `testuser_${timestamp}@example.com`;
-        const password = `UserPass@${Date.now()}!12323`;
+
         await page.locator('input[data-test="phone"]').fill("0893443321");
         await page.locator('input[data-test="email"]').fill(email);
         console.log("ค่าของ email คือ",email);

@@ -145,7 +145,7 @@ test.describe('ทดสอบการไหล Flow',()=>{
     //    await page.locator('button[data-test="login-submit"]').click();
 
 
-     test('TC05=ลงชื่อเข้าใช้งาน',async({page})=>{
+     test('TC05-ลงชื่อเข้าใช้งาน', async ({page})=>{
         await page.locator('input[data-test="email"]').fill(email);
         await page.locator('input[data-test="password"]').fill(password);
         await page.pause();

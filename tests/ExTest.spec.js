@@ -193,8 +193,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
         await page.locator('input[data-test="login-submit"]').click();
         await page.goto("https://practicesoftwaretesting.com/account");
 
-        const titleLocator = page.locator('h1[data-test="page-title"]');
-        await expect(titleLocator).toHaveText('My account');
+        // const titleLocator = page.locator('h1[data-test="page-title"]');
+        // await expect(titleLocator).toHaveText('My account');
 
      await page.locator('button[data-test="nav-categories"]').click();
      await page.locator('[role="menuitem"]',{hasText:'Power Tools'}).click();

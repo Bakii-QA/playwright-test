@@ -194,6 +194,8 @@ test.describe('ทดสอบการไหล Flow',()=>{
 
      })   
 
+     await page.locator('button[data-test="nav-categories"]').click();
+     await page.locator('[role="menuitem"]',{hasText:'Power Tools'}).click();
 
 
 

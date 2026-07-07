@@ -15,10 +15,26 @@ test.beforeEach(async ({ page }) => {
    await page.locator(".card-body b").first().waitFor({ state: 'visible' });
 });
 
+
+test('ดูการเลือก Card body',async ({page})=>{
+const productsName = 'ZARA COAT 3' ;
+  const products = page.locator(".card-body");
+  const title = await page.locator(".card-body b").allTextContents();
+  console.log(title);
+  const count = products.count();
+    for(i=-0;i<count;i++){
+      if(await products.nth(i).locator("b").textContent() === productsName){
+        // add to cart
+        await products.nth(i).locator("text =  Add To Cart").click();
+        break ;
+      }
+    }
+})
+
+
 // 🧪 เทสที่ 1: ระบบจะแอบรัน beforeEach ให้ก่อน แล้วค่อยรันโค้ดด้านล่างนี้
 test('Browser Context playwright test', async ({ page }) => {
-  const productsName = 'ZARA COAT 3' ;
-  const products = page.locator(".card-body");
+  
    await page.getByRole('textbox', { name: 'search' }).fill('iPhone 17 Pro Max');
    // ให้หลุดโฟกัสจากช่อง
    await page.getByRole('textbox', { name: 'search' }).blur();
@@ -36,22 +52,6 @@ test('Browser Context playwright test', async ({ page }) => {
 
    const title = await page.locator(".card-body b").allTextContents();
    console.log(title);
-
-    const count = products.count();
-    for(i=-0;i<count;i++){
-      if(await products.nth(i).locator("b").textContent() === productsName){
-        // add to cart
-        await products.nth(i).locator("text =  Add To Cart").click();
-        break ;
-      }
-
-
-    }
-
-
-
-
-
 
 });
 

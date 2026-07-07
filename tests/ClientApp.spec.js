@@ -22,7 +22,7 @@ const productsName = 'ZARA COAT 3' ;
   const title = await page.locator(".card-body b").allTextContents();
   console.log(title);
   const count = products.count();
-    for(i=-0;i<count;i++){
+    for(i=0;i<count;i++){
       if(await products.nth(i).locator("b").textContent() === productsName){
         // add to cart
         await products.nth(i).locator("text =  Add To Cart").click();

@@ -186,15 +186,11 @@ test.describe('ทดสอบการไหล Flow',()=>{
         const data = JSON.parse(fs.readFileSync('user-data.json', 'utf-8'));
     
         console.log('TC05 กำลังใช้ email จากไฟล์:', data.email);
+        console.log('TC05 กำลังใช้ password จากไฟล์:', data.password);
+
         await page.locator('input[data-test="email"]').fill(data.email);
         await page.locator('input[data-test="password"]').fill(data.password);
-
-        await page.locator('input[data-test="email"]').fill(email);
-        await page.locator('input[data-test="password"]').fill(password);
-
-
-
-
+        await page.locator('input[data-test="login-submit"]').click();
 
      })   
 

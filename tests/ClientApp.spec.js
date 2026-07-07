@@ -35,7 +35,7 @@ const productsName = 'ZARA COAT 3' ;
 // 🧪 เทสที่ 1: ระบบจะแอบรัน beforeEach ให้ก่อน แล้วค่อยรันโค้ดด้านล่างนี้
 test('Browser Context playwright test', async ({ page }) => {
   
-   await page.getByRole('textbox', { name: 'search' }).fill('iPhone 17 Pro Max');
+   await page.getByRole('textbox', { name: 'search' }).fill('iphone 13 pro');
    // ให้หลุดโฟกัสจากช่อง
    await page.getByRole('textbox', { name: 'search' }).blur();
    // สั่งให้ไปคลิกตรงพื้นที่ว่างๆ (Body ของหน้าเว็บ) เพื่อถอนเมาส์ออกมา

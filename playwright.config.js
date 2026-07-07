@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-const config = defineConfig({
+const config = ({
   testDir: './tests',
   timeout: 40 * 1000,
   expect:{

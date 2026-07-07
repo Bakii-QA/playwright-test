@@ -144,20 +144,6 @@ test.describe('ทดสอบการไหล Flow',()=>{
     //    await page.locator('input[data-test="password"]').fill(password);
     //    await page.locator('button[data-test="login-submit"]').click();
 
-
-     test('TC05-ลงชื่อเข้าใช้งาน', async ({page})=>{
-        await page.locator('input[data-test="email"]').fill(email);
-        await page.locator('input[data-test="password"]').fill(password);
-        await page.pause();
-
-
-
-
-
-     })   
-        
-        
-
         // กรณีทำเช็คเรื่อง ค่าที่ไม่ถูก
         // ลองกรอกค่ามั่วๆ เข้าไป
         // await dobField.fill('invalid-date');
@@ -169,12 +155,17 @@ test.describe('ทดสอบการไหล Flow',()=>{
         // // ตรวจสอบข้อความแจ้งเตือน (ถ้ามี element ที่แสดงข้อความ error)
         // const errorMessage = page.locator('#dob-error'); // อ้างอิงจาก aria-describedby
         // await expect(errorMessage).toBeVisible();
-
-
-
-
-
     })
+    test('TC05-ลงชื่อเข้าใช้งาน', async ({page})=>{
+        await page.locator('input[data-test="email"]').fill(email);
+        await page.locator('input[data-test="password"]').fill(password);
+        await page.pause();
+
+
+
+
+
+     })   
 
 
 
